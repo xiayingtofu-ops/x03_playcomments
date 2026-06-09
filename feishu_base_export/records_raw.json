@@ -1,0 +1,2228 @@
+﻿{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "data": [
+      [
+        "HUD上有护盾的时候，护盾和血条关联度不高，很难联想到这个是护盾",
+        null,
+        [
+          "P2"
+        ],
+        null,
+        null,
+        [
+          {
+            "id": "ou_867e85cdf78026203200256845dee680",
+            "name": "姜勋"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        1,
+        "2026-06-04 14:37:35",
+        [
+          {
+            "id": "ou_23342d843b34735d36e44ee1efe0c37f",
+            "name": "王嘉西"
+          }
+        ],
+        [
+          {
+            "file_token": "LQq0b0xrsoCdrPxGy6yc8qY0nDh",
+            "name": "2026-05-27T08-40-49-729Z-f2ivag.jpg",
+            "size": 314410
+          }
+        ],
+        null
+      ],
+      [
+        "查看buff时不响应技能操作了，很奇怪",
+        [
+          {
+            "file_token": "X5NubUv53oJzVcxFFetcfVk2n4e",
+            "name": "20260528104506_rec_.mp4",
+            "size": 5154336
+          }
+        ],
+        [
+          "P1"
+        ],
+        [
+          "处理中"
+        ],
+        null,
+        [
+          {
+            "id": "ou_867e85cdf78026203200256845dee680",
+            "name": "姜勋"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "QJ6vbgNA0oIy1qxkmuwcOFVnnVg",
+            "name": "2026-05-28T02-46-01-854Z-5xx82g.jpg",
+            "size": 554241
+          }
+        ],
+        null
+      ],
+      [
+        "目前音效裁剪范围偏大，希望可以调整得更小。当前常会出现视野外单位正在战斗，却无法快速定位战斗位置的问题。",
+        null,
+        [
+          "P2"
+        ],
+        null,
+        null,
+        [
+          {
+            "id": "ou_867e85cdf78026203200256845dee680",
+            "name": "姜勋"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "MtWvbSbV5ophA5xu3RUcOjdSnRf",
+            "name": "2026-05-29T01-48-33-674Z-9tb3tk.jpg",
+            "size": 411460
+          }
+        ],
+        null
+      ],
+      [
+        "点击同一个目的地坐标时，没有必要弹窗提示“正在前往目的地”，参考其他RTS游戏，这部分正常响应玩家的操作即可",
+        [
+          {
+            "file_token": "LrLibub57oSJ4wxXYzQcIeqcneb",
+            "name": "20260529101406_rec_.mp4",
+            "size": 8653955
+          }
+        ],
+        [
+          "P2"
+        ],
+        [
+          "处理中"
+        ],
+        null,
+        [
+          {
+            "id": "ou_867e85cdf78026203200256845dee680",
+            "name": "姜勋"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "ACjSbm0H2oe9iOxgJcLcXUDTnhf",
+            "name": "2026-05-29T02-15-29-042Z-gzni2l.jpg",
+            "size": 669843
+          }
+        ],
+        null
+      ],
+      [
+        "大锤战斗体验问题：\n1.第二个技能可以用类似鲁班大师的提示来提示玩家技能机制是和普攻次数相关的。\n2.二技能触发的动作最好是一个特殊的普攻动作，类似DOTA2的大锤\n3.放大招后不知道为什么停顿的时间显著的比攻击间隔要长。",
+        null,
+        [
+          "P2"
+        ],
+        null,
+        null,
+        [
+          {
+            "id": "ou_867e85cdf78026203200256845dee680",
+            "name": "姜勋"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "JINob3pmro253sxLgUwcnYjqnkf",
+            "name": "2026-05-29T05-58-00-005Z-6utayo.jpg",
+            "size": 644559
+          }
+        ],
+        null
+      ],
+      [
+        "点击技能显示的tips太窄了，文字排版很不好看",
+        [
+          {
+            "file_token": "F9lmbdE9qo1Jz7xzOyAcxlPfn9d",
+            "name": "image.png",
+            "size": 79938
+          }
+        ],
+        [
+          "P2"
+        ],
+        null,
+        null,
+        [
+          {
+            "id": "ou_867e85cdf78026203200256845dee680",
+            "name": "姜勋"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "YYMIbVVzfogw06xEc9VcKKZcnwd",
+            "name": "2026-05-29T08-26-21-793Z-40oo0g.jpg",
+            "size": 415633
+          }
+        ],
+        null
+      ],
+      [
+        "主动模组也应该可以点击查看tips",
+        [
+          {
+            "file_token": "N2kXbE2cFov91dxvb4lcfHkLnde",
+            "name": "image.png",
+            "size": 47465
+          }
+        ],
+        [
+          "P2"
+        ],
+        null,
+        null,
+        [
+          {
+            "id": "ou_867e85cdf78026203200256845dee680",
+            "name": "姜勋"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "LTN0bAMJDogpICxtLiTcykeOnNg",
+            "name": "2026-05-29T08-26-51-154Z-3k3zl0.jpg",
+            "size": 371047
+          }
+        ],
+        null
+      ],
+      [
+        "主界面增加显示体力信息",
+        null,
+        [
+          "P1"
+        ],
+        [
+          "设计中"
+        ],
+        "[https://project.feishu.cn/t0k6tk/issue/detail/7000058425](https://project.feishu.cn/t0k6tk/issue/detail/7000058425)",
+        [
+          {
+            "id": "ou_ff6fd02a025c4450056b8e8d725d3408",
+            "name": "李尧"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "X8X8bebhvoPNfFxSLgIc3Rblnpb",
+            "name": "2026-05-27T08-40-12-568Z-4wnm0u.jpg",
+            "size": 362364
+          }
+        ],
+        null
+      ],
+      [
+        "HUD上方的资源信息增加点击tips",
+        [
+          {
+            "file_token": "ZTyDbdKVEoTVvrxSp1vcNMOinOh",
+            "name": "image.png",
+            "size": 68481
+          }
+        ],
+        [
+          "P1"
+        ],
+        [
+          "设计中"
+        ],
+        "[https://project.feishu.cn/t0k6tk/issue/detail/7000234571](https://project.feishu.cn/t0k6tk/issue/detail/7000234571)",
+        [
+          {
+            "id": "ou_ff6fd02a025c4450056b8e8d725d3408",
+            "name": "李尧"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "AKgpbNXkwo37HSxyCmLcPlcNnIh",
+            "name": "2026-05-27T08-40-20-665Z-rr97c8.jpg",
+            "size": 386122
+          }
+        ],
+        null
+      ],
+      [
+        "资源溢出后参考三谋字体变红",
+        [
+          {
+            "file_token": "MdhDbyumRoQPGqxrW2pcHt5In4g",
+            "name": "image.png",
+            "size": 67166
+          }
+        ],
+        [
+          "P2"
+        ],
+        null,
+        null,
+        [
+          {
+            "id": "ou_ff6fd02a025c4450056b8e8d725d3408",
+            "name": "李尧"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "RLj6btqCCojZCLxzom6cEvPinXe",
+            "name": "2026-06-01T02-23-34-719Z-qs6m0z.jpg",
+            "size": 425864
+          }
+        ],
+        null
+      ],
+      [
+        "在战斗激烈的场景下，非战斗界面元素应支持隐藏功能。战斗过程中希望留出更多区域展示战斗、战场、数值相关信息，而非保留这些常驻面板。",
+        [
+          {
+            "file_token": "OONGbWKXZo8NORxY2yHc0hj6n5b",
+            "name": "image.png",
+            "size": 1960332
+          }
+        ],
+        null,
+        null,
+        null,
+        [
+          {
+            "id": "ou_ff6fd02a025c4450056b8e8d725d3408",
+            "name": "李尧"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "X2VibyudnoY5lTxYZtLcgOf4nkh",
+            "name": "2026-06-01T08-02-48-764Z-qa2qoy.jpg",
+            "size": 505632
+          }
+        ],
+        null
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        [
+          {
+            "id": "ou_ff6fd02a025c4450056b8e8d725d3408",
+            "name": "李尧"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        null,
+        null
+      ],
+      [
+        "生产线槽位适合做成长反馈——\u003e（让玩家希望填充产线而增加打虫的动力，数值循环变强——因为效率设计后置\n可以考虑在玩家等级上投放一些\n玩家前期如果不填充产线很难自发意识到需要通过重复刷虫子来升级",
+        null,
+        [
+          "P2"
+        ],
+        null,
+        null,
+        [
+          {
+            "id": "ou_4904430abbf99b4d7d8fa0c21760fbf2",
+            "name": "刘洋"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "ObwebBWhSowAtlxqbz5ci57En4f",
+            "name": "2026-05-27T08-40-39-939Z-4erq8g.jpg",
+            "size": 720656
+          }
+        ],
+        null
+      ],
+      [
+        "有每日免费抽奖时希望有红点提示",
+        [
+          {
+            "file_token": "PjNLb6vrxo5HiSxBdRwcTl9Nn9g",
+            "name": "image.png",
+            "size": 126948
+          }
+        ],
+        [
+          "P1"
+        ],
+        [
+          "处理中"
+        ],
+        "[https://project.feishu.cn/t0k6tk/issue/detail/7005992825](https://project.feishu.cn/t0k6tk/issue/detail/7005992825)",
+        [
+          {
+            "id": "ou_4904430abbf99b4d7d8fa0c21760fbf2",
+            "name": "刘洋"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "QN8RbZWrJocUiSxENqvcwtFpnCg",
+            "name": "2026-06-02T02-44-27-837Z-15wq41.jpg",
+            "size": 317208
+          }
+        ],
+        null
+      ],
+      [
+        "势力值和荣誉的说明按钮点了没反应",
+        [
+          {
+            "file_token": "VXDnbFhpzoM91vxM9QEcggQGntb",
+            "name": "image.png",
+            "size": 1242072
+          }
+        ],
+        [
+          "P2"
+        ],
+        null,
+        null,
+        [
+          {
+            "id": "ou_23342d843b34735d36e44ee1efe0c37f",
+            "name": "王嘉西"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        1,
+        "2026-06-04 14:37:35",
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        [
+          {
+            "file_token": "BKDrb0mRvosRFKxfxDScFAufn0f",
+            "name": "2026-05-27T08-40-18-756Z-jj0q0u.jpg",
+            "size": 415971
+          }
+        ],
+        null
+      ],
+      [
+        "内城王虫挑战次数为0，点击挑战没反馈",
+        null,
+        [
+          "P2"
+        ],
+        null,
+        null,
+        [
+          {
+            "id": "ou_23342d843b34735d36e44ee1efe0c37f",
+            "name": "王嘉西"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "QfQSb9L3Xonulqxwb6gc3RCtn7e",
+            "name": "2026-05-27T10-04-40-065Z-se1hi8.jpg",
+            "size": 374914
+          }
+        ],
+        null
+      ],
+      [
+        "第一次合金不足很无奈，且游戏过程中完全不会意识到将要缺了",
+        null,
+        [
+          "P2"
+        ],
+        null,
+        null,
+        [
+          {
+            "id": "ou_23342d843b34735d36e44ee1efe0c37f",
+            "name": "王嘉西"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "ILhob11pGoNVtMxpA0PcugUAnNj",
+            "name": "2026-05-28T01-27-53-540Z-opvk7l.jpg",
+            "size": 285819
+          }
+        ],
+        null
+      ],
+      [
+        "这里或者王虫上面 可以显示下当前最高可挑战王虫/哪些是可以挑战王虫",
+        [
+          {
+            "file_token": "QE3NbVJmEodowrx88V9cpHKrn2b",
+            "name": "image.png",
+            "size": 1040928
+          }
+        ],
+        [
+          "P2"
+        ],
+        null,
+        null,
+        [
+          {
+            "id": "ou_23342d843b34735d36e44ee1efe0c37f",
+            "name": "王嘉西"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "VKR8beh1foaUvsxC6mncwInXni0",
+            "name": "2026-05-28T08-55-21-115Z-hagxgy.jpg",
+            "size": 371212
+          }
+        ],
+        null
+      ],
+      [
+        "章节任务的标题和描述有点过于和游戏进程不符了，感觉不太好",
+        null,
+        [
+          "P2"
+        ],
+        null,
+        null,
+        [
+          {
+            "id": "ou_23342d843b34735d36e44ee1efe0c37f",
+            "name": "王嘉西"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "OJLlbR057opHGWx3lkzcTcHenbb",
+            "name": "2026-05-29T01-51-11-761Z-wjjcig.jpg",
+            "size": 416584
+          }
+        ],
+        null
+      ],
+      [
+        "点击复制按钮后，弹一个toast给予反馈“UID（昵称）复制成功”",
+        [
+          {
+            "file_token": "ZcywbkCS6okHibxBWkIcLpM0nRg",
+            "name": "image.png",
+            "size": 68910
+          }
+        ],
+        [
+          "P2"
+        ],
+        null,
+        null,
+        [
+          {
+            "id": "ou_23342d843b34735d36e44ee1efe0c37f",
+            "name": "王嘉西"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "NDdRbScK6o3y6Tx7BUhc8YsBnNb",
+            "name": "2026-05-29T05-39-33-758Z-vfcmq8.jpg",
+            "size": 390311
+          }
+        ],
+        null
+      ],
+      [
+        "城内王虫打过12级之后因为最高等级就是12所以不会升级，导致城外王虫永远都打不了12级王虫",
+        [
+          {
+            "file_token": "S33IbGaLdoh065xTjRUcqHELnLg",
+            "name": "20260602-0310-55.0304943.mp4",
+            "size": 14492435
+          }
+        ],
+        [
+          "P2"
+        ],
+        null,
+        null,
+        [
+          {
+            "id": "ou_23342d843b34735d36e44ee1efe0c37f",
+            "name": "王嘉西"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "XTjhbdHXuovqhQx0OcTcHhHVnzb",
+            "name": "2026-06-02T03-11-39-040Z-ybtovn.jpg",
+            "size": 539422
+          }
+        ],
+        null
+      ],
+      [
+        "研究资源核心加声望值提示不明显，完全没意识到，而且感觉很奇怪",
+        [
+          {
+            "file_token": "U5babgLSMoootuxUdPIc2bfnnzd",
+            "name": "01_prestige_research.jpg",
+            "size": 365455
+          }
+        ],
+        [
+          "P2"
+        ],
+        [
+          "处理中"
+        ],
+        "目前是在生产线重构方案里加了一点处理。建造/升级生产线的弹窗里资源核心信息加了势力值数值",
+        [
+          {
+            "id": "ou_91ac14683e3cf2bbf37e301fb24469f1",
+            "name": "王宇轩（实习）"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "KtBYbgSvZoPv9uxeLtdcPRnFn5g",
+            "name": "2026-05-27T08-40-45-418Z-se9001.jpg",
+            "size": 420746
+          }
+        ],
+        null
+      ],
+      [
+        "615版本优化生产线功能时考虑一下，背包里没有核心时提示玩家去击杀王虫",
+        [
+          {
+            "file_token": "LfSMbJ4Q7o4vygxyn6QcugEpnIe",
+            "name": "image.png",
+            "size": 230071
+          }
+        ],
+        [
+          "P2"
+        ],
+        null,
+        "跟生产线优化一起",
+        [
+          {
+            "id": "ou_91ac14683e3cf2bbf37e301fb24469f1",
+            "name": "王宇轩（实习）"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        1,
+        "2026-06-04 14:37:35",
+        [
+          {
+            "id": "ou_b02713d5214e4c3410d05ea8a2ca0fdb",
+            "name": "李承轩"
+          }
+        ],
+        [
+          {
+            "file_token": "Wyjobj6cPoWbTYxcxP1clKoMn6d",
+            "name": "2026-05-27T08-40-36-352Z-gg7y6f.jpg",
+            "size": 419952
+          }
+        ],
+        null
+      ],
+      [
+        "生产线界面里，看不到当前资源数量详情",
+        [
+          {
+            "file_token": "Rsdsb8PCbomX55x4GVtcWIMnn7d",
+            "name": "image.png",
+            "size": 1267787
+          }
+        ],
+        [
+          "P1"
+        ],
+        null,
+        "跟生产线优化一起",
+        [
+          {
+            "id": "ou_91ac14683e3cf2bbf37e301fb24469f1",
+            "name": "王宇轩（实习）"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "AZvQbsrUqomn0kxSC5Ocftq8nEd",
+            "name": "2026-05-27T08-40-16-668Z-sqippq.jpg",
+            "size": 319877
+          }
+        ],
+        null
+      ],
+      [
+        "异兽弹窗预览资源核心的时候看不到生产效率信息，写在道具描述里可能也不是个好办法",
+        [
+          {
+            "file_token": "OpSZbamFcoZHhdxtcFHcKMDNn6c",
+            "name": "image.png",
+            "size": 861616
+          }
+        ],
+        [
+          "P2"
+        ],
+        null,
+        "考虑一下。目前情况来说可能没有什么更好方法",
+        [
+          {
+            "id": "ou_91ac14683e3cf2bbf37e301fb24469f1",
+            "name": "王宇轩（实习）"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "K5PYbklbVooE5sxCdAbcpmlsngp",
+            "name": "2026-05-27T08-40-23-868Z-67chdd.jpg",
+            "size": 592935
+          }
+        ],
+        null
+      ],
+      [
+        "这个怎么不算城内的",
+        [
+          {
+            "file_token": "AsGCbAtPeo5BSUxgQzsczXxFn1X",
+            "name": "image.png",
+            "size": 36938
+          }
+        ],
+        [
+          "P2"
+        ],
+        [
+          "处理中"
+        ],
+        "再考虑下描述有没有优化空间",
+        [
+          {
+            "id": "ou_91ac14683e3cf2bbf37e301fb24469f1",
+            "name": "王宇轩（实习）"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        2,
+        "2026-06-04 14:37:35",
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        [
+          {
+            "file_token": "JLqnbwQnNouMdpxdppwcKbWwnCe",
+            "name": "2026-05-28T08-52-05-258Z-p572o7.jpg",
+            "size": 351225
+          }
+        ],
+        null
+      ],
+      [
+        "荒野征服活动里，已经领完奖的条目信息比较冗余，可以按照第二张图片优化一下显示的信息",
+        [
+          {
+            "file_token": "Tidfb4O7eohOMWxPJCrcis2znwh",
+            "name": "image.png",
+            "size": 1933753
+          },
+          {
+            "file_token": "CFJQb2SARoq4RnxBVs9cJy84nAd",
+            "name": "image.png",
+            "size": 1941574
+          }
+        ],
+        [
+          "P2"
+        ],
+        [
+          "处理中"
+        ],
+        null,
+        [
+          {
+            "id": "ou_91ac14683e3cf2bbf37e301fb24469f1",
+            "name": "王宇轩（实习）"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "DeKwbVp8wogRa2xOq74c8f7Jnbe",
+            "name": "2026-05-29T01-46-44-590Z-73z0hw.jpg",
+            "size": 449822
+          }
+        ],
+        null
+      ],
+      [
+        "快速生产次数用完了，如果这里能收缩或者放下面就好了，在上面显示占位置又不能交互",
+        [
+          {
+            "file_token": "M4WObhQQZossgwx7fihcpePDngf",
+            "name": "image.png",
+            "size": 1700516
+          }
+        ],
+        [
+          "P2"
+        ],
+        null,
+        null,
+        [
+          {
+            "id": "ou_91ac14683e3cf2bbf37e301fb24469f1",
+            "name": "王宇轩（实习）"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "GbWnbgpQeojeeSxKDXxc0sPHnKh",
+            "name": "2026-06-02T08-08-24-388Z-0hh0mg.jpg",
+            "size": 211680
+          }
+        ],
+        null
+      ],
+      [
+        "生产线界面有10个舱内产线位，但我不明白什么意思，是随便放置某个资源核心加速？意义不明",
+        [
+          {
+            "file_token": "IKolbHqTYoSdBPxAuCecIzWVnYd",
+            "name": "image.png",
+            "size": 1784987
+          }
+        ],
+        [
+          "P2"
+        ],
+        null,
+        null,
+        [
+          {
+            "id": "ou_91ac14683e3cf2bbf37e301fb24469f1",
+            "name": "王宇轩（实习）"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "AoZwbxfoaoNed3xZ5H9cUVtRnad",
+            "name": "2026-06-02T08-31-22-817Z-zc77yw.jpg",
+            "size": 440560
+          }
+        ],
+        null
+      ],
+      [
+        "抽卡载具展示界面排版问题",
+        [
+          {
+            "file_token": "Be4obRUQLoonffxO0zPcYXhXn6f",
+            "name": "image.png",
+            "size": 2692348
+          }
+        ],
+        [
+          "P2"
+        ],
+        [
+          "处理中"
+        ],
+        "看下能不能缩短描述\nwzx备注：在处理",
+        [
+          {
+            "id": "ou_e3c15c5cf72dc420c217f4606a049d7f",
+            "name": "吴子轩"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "OQXhbOvDIo84LCxI97Zc4DR7nKc",
+            "name": "2026-05-27T08-40-30-462Z-0idkqg.jpg",
+            "size": 192175
+          }
+        ],
+        null
+      ],
+      [
+        "主界面Buff的ICON里看不到BUFF的具体数值",
+        [
+          {
+            "file_token": "Gbrebws9ToT07DxfFRqcEeeFn7d",
+            "name": "image.png",
+            "size": 66602
+          }
+        ],
+        [
+          "P2"
+        ],
+        [
+          "处理中"
+        ],
+        "程序在处理",
+        [
+          {
+            "id": "ou_e3c15c5cf72dc420c217f4606a049d7f",
+            "name": "吴子轩"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "DGo5bfHVko8rCRxndFAcCYHVnUl",
+            "name": "2026-05-28T01-33-46-909Z-a16vce.jpg",
+            "size": 677584
+          }
+        ],
+        null
+      ],
+      [
+        "暴击率词条哪里看",
+        [
+          {
+            "file_token": "Piu7bwJXpoEZ1QxsMptc0xB9nZe",
+            "name": "image.png",
+            "size": 1164588
+          },
+          {
+            "file_token": "BpKqbbcVpoO5DQxPHWucm330nNf",
+            "name": "image.png",
+            "size": 1206750
+          }
+        ],
+        null,
+        null,
+        null,
+        [
+          {
+            "id": "ou_e3c15c5cf72dc420c217f4606a049d7f",
+            "name": "吴子轩"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "A51pbP7Lno6HZdxFJRgcH0xOnVg",
+            "name": "2026-05-29T10-09-21-701Z-68q8bi.jpg",
+            "size": 248291
+          }
+        ],
+        null
+      ],
+      [
+        "点超链接文本没反应，那这个的意义是？",
+        [
+          {
+            "file_token": "Pdc2bcgJCoqzg5x1n91cCl58nyb",
+            "name": "image.png",
+            "size": 717921
+          }
+        ],
+        [
+          "P2"
+        ],
+        null,
+        null,
+        [
+          {
+            "id": "ou_e3c15c5cf72dc420c217f4606a049d7f",
+            "name": "吴子轩"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "Uy2Jb46Olo3QFwx9Txzcl2rendg",
+            "name": "2026-06-02T08-45-04-028Z-e4bixw.jpg",
+            "size": 239439
+          }
+        ],
+        null
+      ],
+      [
+        "实验室缺乏游戏目标，没有好的效果做为反馈来追求",
+        [
+          {
+            "file_token": "WrCQbWS88oPfKCxcQMacbMZwnlb",
+            "name": "08_lab_no_goal.jpg",
+            "size": 80392
+          }
+        ],
+        [
+          "P1"
+        ],
+        [
+          "缺方案"
+        ],
+        null,
+        [
+          {
+            "id": "ou_d8d7c174961e537f1b9669c085b5d82a",
+            "name": "杨心权"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "NokIbNLoEoEFTdxpsYlcd7Sin3e",
+            "name": "2026-05-27T08-40-34-298Z-zek6li.jpg",
+            "size": 450708
+          }
+        ],
+        null
+      ],
+      [
+        "势力值追求不明确，第一次接触到势力值属性，不知道怎么追求",
+        [
+          {
+            "file_token": "C52ubOPSfo6Gw9xWKIVcVOJJnUf",
+            "name": "09_power_value.jpg",
+            "size": 39620
+          }
+        ],
+        [
+          "P1"
+        ],
+        [
+          "处理中"
+        ],
+        null,
+        [
+          {
+            "id": "ou_d8d7c174961e537f1b9669c085b5d82a",
+            "name": "杨心权"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "LG5VbFPD4oQvdJxf7qHcIDl4nUd",
+            "name": "2026-05-27T08-40-22-727Z-03ba4f.jpg",
+            "size": 564518
+          }
+        ],
+        null
+      ],
+      [
+        "铜币不知道从哪来的，前期提升战力比较有用，但感受不到获取来源",
+        [
+          {
+            "file_token": "VuMBb3Sxpo1PLjxrWsjcLPW0nmd",
+            "name": "image.png",
+            "size": 18662
+          }
+        ],
+        [
+          "P1"
+        ],
+        [
+          "处理中"
+        ],
+        null,
+        [
+          {
+            "id": "ou_d8d7c174961e537f1b9669c085b5d82a",
+            "name": "杨心权"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "MJWHbfLVWoN7pgx25VBcIYCknSd",
+            "name": "2026-05-27T08-40-40-227Z-fbtje9.jpg",
+            "size": 265214
+          }
+        ],
+        null
+      ],
+      [
+        "载具修复页面\n1.第一次不足的时候不知道咋办\n2.这个界面里的单位描边特别粗\n[https://applink.feishu.cn/client/message/link/open?token=Ami3n14CAwACahk5dOZCDNM%3D](https://applink.feishu.cn/client/message/link/open?token=Ami3n14CAwACahk5dOZCDNM%3D)",
+        null,
+        [
+          "P2"
+        ],
+        [
+          "处理中"
+        ],
+        "第1条处理中\n第2条已处理",
+        [
+          {
+            "id": "ou_d8d7c174961e537f1b9669c085b5d82a",
+            "name": "杨心权"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "VkIrbysTRovMMfxGTBDc05IwnWb",
+            "name": "2026-05-29T07-00-37-161Z-iyq914.jpg",
+            "size": 469857
+          }
+        ],
+        null
+      ],
+      [
+        "基地和场景切换时有瞬间穿帮",
+        [
+          {
+            "file_token": "Npyqb3ocXoHGMpxB3FGcvjT0nNf",
+            "name": "20260529113850_rec_.mp4",
+            "size": 5864907
+          },
+          {
+            "file_token": "OOhgbO8HKooLEQxaMuDchgy4nBh",
+            "name": "image.png",
+            "size": 103348
+          }
+        ],
+        [
+          "P2"
+        ],
+        [
+          "处理中"
+        ],
+        null,
+        [
+          {
+            "id": "ou_d8d7c174961e537f1b9669c085b5d82a",
+            "name": "杨心权"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "IbDObujkLoI9Olxiq8FcE58vn6d",
+            "name": "2026-05-29T03-49-45-497Z-we4yia.jpg",
+            "size": 264314
+          }
+        ],
+        null
+      ],
+      [
+        "能切换技能的载具（蜘蛛）在介绍页面看不了第二套技能。需增加切换方式",
+        null,
+        [
+          "P2"
+        ],
+        null,
+        null,
+        [
+          {
+            "id": "ou_d8d7c174961e537f1b9669c085b5d82a",
+            "name": "杨心权"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "GZHzb0YFLoltoXxDQxUcTCi2nLb",
+            "name": "2026-05-28T08-22-21-725Z-n8y0ej.jpg",
+            "size": 497162
+          }
+        ],
+        null
+      ],
+      [
+        "王虫掉落资源核心加一个动画来示意",
+        [
+          {
+            "file_token": "BZFbbBIAKoxtcJxjJIzcGsurnfe",
+            "name": "image.png",
+            "size": 919081
+          }
+        ],
+        [
+          "P2"
+        ],
+        null,
+        null,
+        [
+          {
+            "id": "ou_d8d7c174961e537f1b9669c085b5d82a",
+            "name": "杨心权"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "P4JnbUZjaomqKWxYTojcpKfpnqe",
+            "name": "2026-05-28T01-34-39-941Z-vwmv6n.jpg",
+            "size": 317686
+          }
+        ],
+        null
+      ],
+      [
+        "只有一个模组可以升阶时没有一键升阶按钮，红点提示但不好找可升阶模组\n在模组多的时候感觉有点难受——不好找哪个模组可以升阶",
+        [
+          {
+            "file_token": "E1HTbbVrooYTlFxUdsvclt89nAe",
+            "name": "image.png",
+            "size": 614147
+          }
+        ],
+        [
+          "P2"
+        ],
+        null,
+        "需要想一下",
+        [
+          {
+            "id": "ou_d8d7c174961e537f1b9669c085b5d82a",
+            "name": "杨心权"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "N59nbReJHozErJxkPo6cpwTEnJc",
+            "name": "2026-05-29T07-05-27-847Z-8e57kr.jpg",
+            "size": 589477
+          }
+        ],
+        null
+      ],
+      [
+        "想要一键升级功能常驻",
+        [
+          {
+            "file_token": "WlDabmueUo0dE8xfQJHcpw0pn0d",
+            "name": "image.png",
+            "size": 162256
+          },
+          {
+            "file_token": "OvxpbmRadoA50WxHpTOc9ODvnwc",
+            "name": "image.png",
+            "size": 1158809
+          }
+        ],
+        [
+          "P2"
+        ],
+        null,
+        "和上条的需求其实是一致的。需要想一下",
+        [
+          {
+            "id": "ou_d8d7c174961e537f1b9669c085b5d82a",
+            "name": "杨心权"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "Ti5Zbi9jxoEOrUx3c8TcN4ilnOf",
+            "name": "2026-05-29T10-14-04-996Z-n7wcv2.jpg",
+            "size": 418316
+          }
+        ],
+        null
+      ],
+      [
+        "载具返回基地时显示“移动中”不太明白意思，改成“返回基地中”是不是更合适一些？",
+        [
+          {
+            "file_token": "L6WHbpiino4jEixRRbCcik2anVh",
+            "name": "image.png",
+            "size": 1730679
+          }
+        ],
+        [
+          "P2"
+        ],
+        null,
+        null,
+        [
+          {
+            "id": "ou_d8d7c174961e537f1b9669c085b5d82a",
+            "name": "杨心权"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "EAx8bAfxaoWP0Qx0LwccQJqYnKc",
+            "name": "2026-06-02T08-03-32-085Z-jr9g5m.jpg",
+            "size": 434341
+          }
+        ],
+        null
+      ],
+      [
+        "王虫激活按钮不易发现，打开弹窗后容易意识不到王虫身上有个激活按钮",
+        [
+          {
+            "file_token": "JiQGbEswjob2mQx7yfYcsKDtnTd",
+            "name": "04_king_worm_button.jpg",
+            "size": 274147
+          }
+        ],
+        [
+          "P1"
+        ],
+        [
+          "设计中"
+        ],
+        "[城外王虫弹窗界面优化](https://centurygames.feishu.cn/wiki/VSZyw5XRZiW06MkvcC2ch18hnPc)",
+        [
+          {
+            "id": "ou_8346f4e78e89369b9113a2608ac6bd87",
+            "name": "张泽臻"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "WahzbVvw3ojZ4WxgzTAcZUibn3g",
+            "name": "2026-05-27T08-40-29-009Z-w2uacl.jpg",
+            "size": 305601
+          }
+        ],
+        null
+      ],
+      [
+        "演习的战力警告提示条目布局问题，条目离数字太远了，如果字体变色奇怪，可以在前面加上 ✅ ❌的标记",
+        [
+          {
+            "file_token": "WlkubvHQ3oKYkpxjHxpcVIlJnUg",
+            "name": "05_exercise_reward.jpg",
+            "size": 120690
+          }
+        ],
+        [
+          "P1"
+        ],
+        [
+          "设计中"
+        ],
+        "[内城王虫交互优化20260521](https://centurygames.feishu.cn/wiki/Mi26waYzuiINqUkrKW2c1gNtnre)",
+        [
+          {
+            "id": "ou_8346f4e78e89369b9113a2608ac6bd87",
+            "name": "张泽臻"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "FaDtbcW4eo9Ht0xEISHcBZYsnWf",
+            "name": "2026-05-27T08-40-49-850Z-hz6hq9.jpg",
+            "size": 453557
+          }
+        ],
+        null
+      ],
+      [
+        "找对应等级王虫困难，找对应等级的王虫很蛋疼",
+        null,
+        [
+          "P1"
+        ],
+        [
+          "处理中"
+        ],
+        "[搜索异兽](https://centurygames.feishu.cn/wiki/EdnhwZxtViZGMqkh4kmcg3y7npg)",
+        [
+          {
+            "id": "ou_8346f4e78e89369b9113a2608ac6bd87",
+            "name": "张泽臻"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "M8babyY1JoHPpcxFhavc7mGOnEg",
+            "name": "2026-05-27T08-40-39-212Z-s0gnx4.jpg",
+            "size": 301152
+          }
+        ],
+        null
+      ],
+      [
+        "地格弹窗残留，按钮文案优化；地格的弹窗进出城后还存在，看着有点奇怪，另外点击主城出现的按钮不要叫返回，叫“基地”",
+        [
+          {
+            "file_token": "IwB1bywKWobH4dxKEb1cUSrSn7e",
+            "name": "地格按钮.mp4",
+            "size": 2895891
+          }
+        ],
+        [
+          "P1"
+        ],
+        [
+          "处理中"
+        ],
+        "[https://project.feishu.cn/t0k6tk/issue/detail/6997657491](https://project.feishu.cn/t0k6tk/issue/detail/6997657491)",
+        [
+          {
+            "id": "ou_8346f4e78e89369b9113a2608ac6bd87",
+            "name": "张泽臻"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "Im41bb9BMoH27Lxw08TchZ4dncg",
+            "name": "2026-05-27T08-40-54-986Z-zr7ri2.jpg",
+            "size": 489025
+          }
+        ],
+        null
+      ],
+      [
+        "内城的红点得想办法穿透出来，及时提醒玩家",
+        [
+          {
+            "file_token": "PoCzb0teboBV4FxokhjcDyx1nRh",
+            "name": "image.png",
+            "size": 477949
+          }
+        ],
+        [
+          "P2"
+        ],
+        [
+          "处理中"
+        ],
+        "[https://project.feishu.cn/t0k6tk/issue/detail/6997070240](https://project.feishu.cn/t0k6tk/issue/detail/6997070240)",
+        [
+          {
+            "id": "ou_8346f4e78e89369b9113a2608ac6bd87",
+            "name": "张泽臻"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "X2lrbq0CGoxr0wxXhXAcuTpfnkb",
+            "name": "2026-05-27T08-40-22-287Z-mimg5d.jpg",
+            "size": 353121
+          }
+        ],
+        null
+      ],
+      [
+        "射程远的单位，在前往攻击王虫时，路线会被其他界面遮挡，导致会误解没有响应用户操作",
+        [
+          {
+            "file_token": "Bco6bfY7eoMjv9x7S5QcCfTJnWd",
+            "name": "20260521115539_rec_.mp4",
+            "size": 13113551
+          }
+        ],
+        [
+          "P2"
+        ],
+        [
+          "设计中"
+        ],
+        "[远程攻击单位攻击目标时路线被遮挡](https://centurygames.feishu.cn/wiki/WuxYwtzemiHKIQkwUcYcpS36nZe)",
+        [
+          {
+            "id": "ou_8346f4e78e89369b9113a2608ac6bd87",
+            "name": "张泽臻"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "BFJEbXm7LoPbg8xZKSocQrKqnDc",
+            "name": "2026-05-27T08-40-41-765Z-wh7wam.jpg",
+            "size": 381236
+          }
+        ],
+        null
+      ],
+      [
+        "王虫奖励弹窗优化信息展示，包含经验",
+        [
+          {
+            "file_token": "RDuSbbhCYo4VnSxrOs2ctwCEn2g",
+            "name": "image.png",
+            "size": 289373
+          }
+        ],
+        [
+          "P1"
+        ],
+        [
+          "设计中"
+        ],
+        "[城外王虫弹窗界面优化](https://centurygames.feishu.cn/wiki/VSZyw5XRZiW06MkvcC2ch18hnPc)",
+        [
+          {
+            "id": "ou_8346f4e78e89369b9113a2608ac6bd87",
+            "name": "张泽臻"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "SegWb9376oeFhzxUlbfcG3fKnVc",
+            "name": "2026-05-27T08-40-33-477Z-avbu8b.jpg",
+            "size": 202697
+          }
+        ],
+        null
+      ],
+      [
+        "激活异兽条件不满足的时候优化多语言富文本，清晰条件显示",
+        [
+          {
+            "file_token": "WfbNbtP9goMfuLxqhOGczFEYnIh",
+            "name": "image.png",
+            "size": 56689
+          }
+        ],
+        [
+          "P1"
+        ],
+        [
+          "设计中"
+        ],
+        "[城外王虫弹窗界面优化](https://centurygames.feishu.cn/wiki/VSZyw5XRZiW06MkvcC2ch18hnPc)",
+        [
+          {
+            "id": "ou_8346f4e78e89369b9113a2608ac6bd87",
+            "name": "张泽臻"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "PAefb1IzHosC5fx6AvpcWXdBnqg",
+            "name": "2026-05-27T08-40-18-687Z-1jdrb3.jpg",
+            "size": 434457
+          }
+        ],
+        null
+      ],
+      [
+        "王虫和基地密度太高了，刷新王虫和生成基地的时候搞个最小距离半径？",
+        null,
+        [
+          "P1"
+        ],
+        [
+          "处理中"
+        ],
+        "王虫新增距离基地的最小距离限制，基地之间的距离限制增大",
+        [
+          {
+            "id": "ou_8346f4e78e89369b9113a2608ac6bd87",
+            "name": "张泽臻"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "Xdykb79nZo8shWxG9vvcS78FnRa",
+            "name": "2026-05-27T08-40-14-660Z-vxlufn.jpg",
+            "size": 383027
+          }
+        ],
+        null
+      ],
+      [
+        "打完城外王虫增加类似升级表现的经验表现变化",
+        null,
+        [
+          "P1"
+        ],
+        [
+          "设计中"
+        ],
+        "弹出这个表现需要做一点延迟，避免玩家看着王虫还没死，就弹出这个很明显的提示\n[打完城外王虫增加类似升级表现的经验表现变化](https://centurygames.feishu.cn/wiki/XHe9wZHqkihyovkP9Olcoz3gndf)\n[https://project.feishu.cn/t0k6tk/story/detail/6999883068](https://project.feishu.cn/t0k6tk/story/detail/6999883068)",
+        [
+          {
+            "id": "ou_8346f4e78e89369b9113a2608ac6bd87",
+            "name": "张泽臻"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "LGtSbskSMoZW6Kx4e24cSvoDnjb",
+            "name": "2026-05-27T08-40-33-574Z-az9zk3.jpg",
+            "size": 430070
+          }
+        ],
+        null
+      ],
+      [
+        "偶尔会出现字体破碎的问题",
+        [
+          {
+            "file_token": "GCbpb7fnfo9THfx6SbocywWnn5c",
+            "name": "image.png",
+            "size": 718116
+          }
+        ],
+        [
+          "P2"
+        ],
+        [
+          "处理中"
+        ],
+        "[https://project.feishu.cn/t0k6tk/issue/detail/7002604856](https://project.feishu.cn/t0k6tk/issue/detail/7002604856)\n已开单",
+        [
+          {
+            "id": "ou_8346f4e78e89369b9113a2608ac6bd87",
+            "name": "张泽臻"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "ZQiBbkrolo3WILx9HbkcvOHXntE",
+            "name": "2026-05-29T02-50-41-727Z-bnmfrn.jpg",
+            "size": 197823
+          }
+        ],
+        null
+      ],
+      [
+        "增加载具回城特效",
+        [
+          {
+            "file_token": "PbN0bX1LboagjBxJk0Hc4rPQnqK",
+            "name": "飞书20260529-145320.mp4",
+            "size": 1276962
+          }
+        ],
+        [
+          "P2"
+        ],
+        null,
+        null,
+        [
+          {
+            "id": "ou_8346f4e78e89369b9113a2608ac6bd87",
+            "name": "张泽臻"
+          }
+        ],
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "Zn0RbfaEuoMrYxx78ogcAUcsntg",
+            "name": "2026-05-29T06-53-48-874Z-82ut67.jpg",
+            "size": 365646
+          }
+        ],
+        null
+      ],
+      [
+        "高台路线开始不显示，走到了对应的点才会有",
+        [
+          {
+            "file_token": "Btejb5ZymoYoVcxgqgacpgvKnjd",
+            "name": "20260602-0946-39.3704136.mp4",
+            "size": 39265038
+          }
+        ],
+        null,
+        null,
+        null,
+        null,
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-04 14:37:35",
+        null,
+        [
+          {
+            "file_token": "Ffg8bkYjAoVlPbxv5IQcw5gmnsc",
+            "name": "2026-06-02T09-48-25-675Z-99jt3h.jpg",
+            "size": 351692
+          }
+        ],
+        null
+      ]
+    ],
+    "field_id_list": [
+      "fldHy9HQO9",
+      "fldmlme6mj",
+      "flddZqPy4y",
+      "fldxB7QmPi",
+      "fldPTWrwky",
+      "fldubdP27N",
+      "fldqXT3xTr",
+      "fldP1f1suK",
+      "fldvRZllDS",
+      "fldoj9ibxW",
+      "fldftLhjJK",
+      "fldbBFvDCK"
+    ],
+    "fields": [
+      "描述",
+      "截图",
+      "优先级",
+      "状态",
+      "备注",
+      "策划",
+      "提出人",
+      "点赞人数",
+      "创建时间",
+      "点赞/取消人员列表",
+      "问题描述图片",
+      "评分"
+    ],
+    "has_more": false,
+    "ignored_fields": [
+      {
+        "id": "fldwU4Vi3E",
+        "name": "开单",
+        "reason": "UNSUPPORTED: not_support field cannot be read through OpenAPI."
+      },
+      {
+        "id": "flduM61fk5",
+        "name": "赞同",
+        "reason": "UNSUPPORTED: not_support field cannot be read through OpenAPI."
+      }
+    ],
+    "query_context": {
+      "field_scope": "view_visible_fields",
+      "record_scope": "view_filtered_records"
+    },
+    "record_id_list": [
+      "rec27tqRSCY5HJ",
+      "rec27u7TzPiVUi",
+      "rec27uvs1MJtLX",
+      "rec27uvUtgPPSD",
+      "rec27uzHvL4c4T",
+      "rec27uCefsOU6o",
+      "rec27uCeLfw5ju",
+      "recvkfPyRoBn5c",
+      "recvkfQlVjKXcQ",
+      "rec27vHEnnmNEb",
+      "rec27vNqEmLcNc",
+      "recvllJGEQVbMa",
+      "recvkaHaMOlvyG",
+      "rec27w6xyoaO6f",
+      "recvkNEWcjdMo6",
+      "recvkOu5pv9qS6",
+      "rec27u6z5p5Prg",
+      "rec27uebIuAJao",
+      "rec27uvuOsu2BX",
+      "rec27uzo0XueEM",
+      "rec27w70gAINlZ",
+      "recvkaAxhCdR7s",
+      "recvkdDA1CszxE",
+      "recvkdUbKc4ghY",
+      "recvkfPF8WNvMq",
+      "rec27ue8jBAtdT",
+      "rec27uvq7ulqyP",
+      "recvln77h2LdKL",
+      "recvlncgKlhl37",
+      "rec27tJ69uu7yE",
+      "rec27u6FjQvBEj",
+      "rec27uDZ4LpICl",
+      "recvlngsI2JWVx",
+      "recvkaAxhCeRIS",
+      "recvkaAxhCKVws",
+      "recvkdEEvFw0Oq",
+      "recvkZs3SMYmat",
+      "rec27uxw3TK4B9",
+      "recvkTW3xboojL",
+      "rec27u6GeVJKJf",
+      "recvkZsQl4y1Cw",
+      "rec27uE438TTDe",
+      "recvln5OYCvJzw",
+      "recvkaAxhChQTP",
+      "recvkaAxhCzOtB",
+      "recvkaAxhCiJa7",
+      "recvkaCk2jL3ld",
+      "recvkdEWQj9qMd",
+      "recvkdVvRC7c42",
+      "recvkfKukkzFic",
+      "recvkfQ2aY765i",
+      "recvkfR5c92MOF",
+      "recvkGzEFiKFWn",
+      "rec27uwvDPY6mn",
+      "rec27uAEpelv5L",
+      "rec27wdLo3OUi2"
+    ]
+  }
+}

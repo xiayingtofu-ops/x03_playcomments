@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>游玩反馈管理平台 MVP</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <span class="brand-mark">PF</span>
+          <div>
+            <strong>PlayFeedback</strong>
+            <span>内部游玩反馈</span>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="主导航">
+          <button class="nav-item active" data-view="feed" type="button">反馈流</button>
+          <button class="nav-item" data-view="table" type="button">策划表格</button>
+          <button class="nav-item" data-view="settings" type="button">通知设置</button>
+        </nav>
+
+        <div class="user-card">
+          <label for="current-user">当前身份</label>
+          <select id="current-user"></select>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <h1>游玩反馈管理平台</h1>
+            <p>把零散建议收进同一个地方，让策划能快速判断、分派和跟进。</p>
+          </div>
+          <button class="primary-button" id="open-compose" type="button">提出反馈</button>
+        </header>
+
+        <section class="mvp-panel" aria-label="MVP 功能范围">
+          <div>
+            <span class="eyebrow">MVP 范围</span>
+            <h2>先解决“方便提、看得见、有人处理”</h2>
+          </div>
+          <ul>
+            <li>员工用轻量表单提交问题、建议和体验反馈。</li>
+            <li>所有人通过 feed 流浏览、点赞、评论和补充上下文。</li>
+            <li>策划用表格按负责人、状态、优先级筛选并更新处理状态。</li>
+            <li>用户可配置点赞、评论、状态变化和分配通知。</li>
+          </ul>
+        </section>
+
+        <section class="view active" id="feed-view">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Feed</span>
+              <h2>大家正在提什么</h2>
+            </div>
+            <div class="search">
+              <input id="feed-search" type="search" placeholder="搜索标题、模块、标签" />
+            </div>
+          </div>
+          <div class="feed-grid">
+            <div id="feedback-feed" class="feed-list"></div>
+            <aside class="notification-panel">
+              <div class="panel-head">
+                <h3>站内通知</h3>
+                <span id="unread-count">0 未读</span>
+              </div>
+              <div id="notification-list" class="notification-list"></div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view" id="table-view">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Planner Table</span>
+              <h2>我负责的条目</h2>
+            </div>
+            <div class="filters">
+              <select id="owner-filter"></select>
+              <select id="status-filter">
+                <option value="">全部状态</option>
+                <option>待评估</option>
+                <option>已收录</option>
+                <option>处理中</option>
+                <option>已解决</option>
+                <option>暂不处理</option>
+              </select>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>反馈</th>
+                  <th>模块</th>
+                  <th>负责人</th>
+                  <th>优先级</th>
+                  <th>热度</th>
+                  <th>状态</th>
+                </tr>
+              </thead>
+              <tbody id="feedback-table"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="view" id="settings-view">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Notifications</span>
+              <h2>通知偏好</h2>
+            </div>
+          </div>
+          <div class="settings-grid" id="settings-grid"></div>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="compose-dialog">
+      <form id="compose-form" method="dialog">
+        <div class="dialog-head">
+          <h2>提出反馈</h2>
+          <button class="icon-button" id="close-compose" type="button" aria-label="关闭">×</button>
+        </div>
+        <label>
+          标题
+          <input name="title" required maxlength="80" placeholder="一句话说明问题或建议" />
+        </label>
+        <label>
+          详细描述
+          <textarea name="content" required rows="5" placeholder="发生场景、期望表现、补充截图链接等"></textarea>
+        </label>
+        <div class="form-grid">
+          <label>
+            类型
+            <select name="category">
+              <option>问题</option>
+              <option selected>建议</option>
+              <option>体验</option>
+              <option>数值</option>
+            </select>
+          </label>
+          <label>
+            模块
+            <input name="module" placeholder="例如：战斗 / 任务 / UI" />
+          </label>
+          <label>
+            负责人
+            <select name="ownerId" id="compose-owner"></select>
+          </label>
+          <label>
+            标签
+            <input name="tags" placeholder="用逗号分隔" />
+          </label>
+        </div>
+        <div class="dialog-actions">
+          <button class="ghost-button" id="cancel-compose" type="button">取消</button>
+          <button class="primary-button" type="submit">提交反馈</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

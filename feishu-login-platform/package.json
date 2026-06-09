@@ -1,0 +1,25 @@
+{
+  "name": "feishu-login-platform",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js",
+    "check": "node --check src/index.js && node --check src/config.js && node --check src/feishuClient.js && node --check src/fileSessionStore.js && node --check src/userStore.js && node --check src/db.js && node --check src/baseRepository.js && node --check src/feishuBaseSync.js && node --check src/feishuBaseTransform.js && node --check scripts/setupDb.js && node --check scripts/importFeishuExport.js && node --check scripts/processOutbox.js && node --check scripts/processInbox.js",
+    "db:setup": "node scripts/setupDb.js",
+    "db:import": "node scripts/importFeishuExport.js",
+    "sync:outbox": "node scripts/processOutbox.js",
+    "sync:inbox": "node scripts/processInbox.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "helmet": "^8.0.0",
+    "pg": "^8.21.0"
+  },
+  "engines": {
+    "node": ">=18.18.0"
+  }
+}

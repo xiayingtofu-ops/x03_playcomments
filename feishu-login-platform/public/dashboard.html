@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>工作台 - 飞书登录平台</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="dashboard-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Session Active</p>
+          <h1>飞书登录工作台</h1>
+        </div>
+        <button class="ghost-button" id="logoutButton" type="button">退出登录</button>
+      </header>
+
+      <section class="profile-layout">
+        <article class="profile-card">
+          <img class="avatar" id="avatar" alt="" />
+          <div>
+            <h2 id="name">加载中</h2>
+            <p class="muted" id="email">正在读取飞书用户信息</p>
+          </div>
+        </article>
+
+        <article class="info-card">
+          <h2>用户标识</h2>
+          <dl>
+            <div>
+              <dt>Open ID</dt>
+              <dd id="openId">-</dd>
+            </div>
+            <div>
+              <dt>Union ID</dt>
+              <dd id="unionId">-</dd>
+            </div>
+            <div>
+              <dt>Tenant Key</dt>
+              <dd id="tenantKey">-</dd>
+            </div>
+          </dl>
+        </article>
+      </section>
+
+      <section class="raw-panel">
+        <h2>服务端会话数据</h2>
+        <pre id="rawUser">{}</pre>
+      </section>
+    </main>
+    <script src="/dashboard.js"></script>
+  </body>
+</html>

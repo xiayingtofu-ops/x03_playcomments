@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Local environment and logs
+.env
+**/.env
+*.log
+npm-debug.log*
+
+# Python cache
+__pycache__/
+**/__pycache__/
+*.pyc
+
+# Runtime databases and uploads
+*.db
+*.sqlite
+*.sqlite3
+feishu_base_export/attachments/
+feishu_base_export/platform_uploads/
+feishu_base_export/feishu_base_records.sqlite.sql
+
+# Large/generated local exports
+already/
+data/
+exports/
+X03开荒版本测试反馈清单_数据表_表格.csv
+
+# OS/editor noise
+.DS_Store
+Thumbs.db

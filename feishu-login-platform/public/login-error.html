@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>登录失败 - 飞书登录平台</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="error-shell">
+      <section class="login-panel">
+        <p class="eyebrow">Login Error</p>
+        <h1>飞书登录没有完成</h1>
+        <p class="muted" id="message">请稍后重试。</p>
+        <a class="link-button" href="/">返回登录页</a>
+      </section>
+    </main>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      document.querySelector("#message").textContent = params.get("message") || "请稍后重试。";
+    </script>
+  </body>
+</html>

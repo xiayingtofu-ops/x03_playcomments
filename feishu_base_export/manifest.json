@@ -1,0 +1,84 @@
+{
+  "base_token": "NeijbKbZFafkxJsTiolcRWGFnEc",
+  "table_id": "tbllTU2raGhLxAW3",
+  "view_id": "vew9FrF9dW",
+  "record_count": 56,
+  "attachment_count": 101,
+  "ignored_fields": [
+    {
+      "id": "fldwU4Vi3E",
+      "name": "开单",
+      "reason": "UNSUPPORTED: not_support field cannot be read through OpenAPI."
+    },
+    {
+      "id": "flduM61fk5",
+      "name": "赞同",
+      "reason": "UNSUPPORTED: not_support field cannot be read through OpenAPI."
+    }
+  ],
+  "fields": [
+    "描述",
+    "截图",
+    "优先级",
+    "状态",
+    "备注",
+    "策划",
+    "提出人",
+    "点赞人数",
+    "创建时间",
+    "点赞/取消人员列表",
+    "问题描述图片",
+    "评分"
+  ],
+  "field_ids": [
+    "fldHy9HQO9",
+    "fldmlme6mj",
+    "flddZqPy4y",
+    "fldxB7QmPi",
+    "fldPTWrwky",
+    "fldubdP27N",
+    "fldqXT3xTr",
+    "fldP1f1suK",
+    "fldvRZllDS",
+    "fldoj9ibxW",
+    "fldftLhjJK",
+    "fldbBFvDCK"
+  ],
+  "files": {
+    "database": "C:\\Users\\Administrator\\Documents\\New project\\feishu_base_export\\feishu_base_records.db",
+    "records_csv": "C:\\Users\\Administrator\\Documents\\New project\\feishu_base_export\\base_records.csv",
+    "attachments_csv": "C:\\Users\\Administrator\\Documents\\New project\\feishu_base_export\\base_attachments.csv",
+    "records_raw": "C:\\Users\\Administrator\\Documents\\New project\\feishu_base_export\\records_raw.json",
+    "fields_raw": "C:\\Users\\Administrator\\Documents\\New project\\feishu_base_export\\fields_raw.json",
+    "attachments_dir": "C:\\Users\\Administrator\\Documents\\New project\\feishu_base_export\\attachments",
+    "download_status_csv": "C:\\Users\\Administrator\\Documents\\New project\\feishu_base_export\\attachment_download_status.csv"
+  },
+  "download_summary": {
+    "record_count": 56,
+    "attachment_count": 101,
+    "downloaded_count": 101,
+    "failed_count": 0,
+    "p1_count": 16,
+    "p2_count": 36,
+    "status_counts": [
+      [
+        "empty",
+        30
+      ],
+      [
+        "处理中",
+        17
+      ],
+      [
+        "设计中",
+        8
+      ],
+      [
+        "缺方案",
+        1
+      ]
+    ],
+    "existing_downloaded_files": 101,
+    "downloaded_total_bytes": 140532434
+  }
+}
