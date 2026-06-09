@@ -114,6 +114,29 @@ def init_db():
             )
             """
         )
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS platform_record_likes (
+              record_id TEXT NOT NULL,
+              user_key TEXT NOT NULL,
+              user_name TEXT NOT NULL,
+              created_at TEXT NOT NULL,
+              PRIMARY KEY (record_id, user_key)
+            )
+            """
+        )
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS platform_record_comments (
+              id TEXT PRIMARY KEY,
+              record_id TEXT NOT NULL,
+              author_key TEXT NOT NULL,
+              author_name TEXT NOT NULL,
+              body TEXT NOT NULL,
+              created_at TEXT NOT NULL
+            )
+            """
+        )
         defaults = [
             ("likes", "收到点赞", "别人赞同我提出的反馈时生成站内通知。"),
             ("comments", "收到评论", "别人评论我提出或关注的反馈时生成站内通知。"),
@@ -230,6 +253,108 @@ def mark_notifications_read():
     with sqlite3.connect(DB_PATH) as conn:
         conn.execute("UPDATE platform_notifications SET read = 1")
     return get_notification_payload()
+
+
+def interaction_user(user):
+    if not user:
+        return "guest", "平台用户"
+    return user.get("open_id") or user.get("union_id") or user.get("name") or "guest", user.get("name") or "飞书用户"
+
+
+def get_record_interactions(user=None):
+    user_key, _ = interaction_user(user)
+    with sqlite3.connect(DB_PATH) as conn:
+        conn.row_factory = sqlite3.Row
+        likes = conn.execute(
+            """
+            SELECT record_id, COUNT(*) AS like_count,
+                   SUM(CASE WHEN user_key = ? THEN 1 ELSE 0 END) AS liked_by_me
+            FROM platform_record_likes
+            GROUP BY record_id
+            """,
+            (user_key,),
+        ).fetchall()
+        comments = conn.execute(
+            """
+            SELECT * FROM platform_record_comments
+            ORDER BY created_at ASC
+            """
+        ).fetchall()
+
+    data = {}
+    for row in likes:
+        item = row_to_dict(row)
+        data.setdefault(item["record_id"], {"like_count": 0, "liked_by_me": False, "comments": []})
+        data[item["record_id"]]["like_count"] = item["like_count"]
+        data[item["record_id"]]["liked_by_me"] = bool(item["liked_by_me"])
+
+    for row in comments:
+        item = row_to_dict(row)
+        data.setdefault(item["record_id"], {"like_count": 0, "liked_by_me": False, "comments": []})
+        data[item["record_id"]]["comments"].append(item)
+    return data
+
+
+def toggle_record_like(record_id, user):
+    if not record_id:
+        raise ValueError("缺少反馈记录")
+    user_key, user_name = interaction_user(user)
+    with sqlite3.connect(DB_PATH) as conn:
+        exists = conn.execute(
+            "SELECT 1 FROM platform_record_likes WHERE record_id = ? AND user_key = ?",
+            (record_id, user_key),
+        ).fetchone()
+        if exists:
+            conn.execute(
+                "DELETE FROM platform_record_likes WHERE record_id = ? AND user_key = ?",
+                (record_id, user_key),
+            )
+        else:
+            conn.execute(
+                """
+                INSERT INTO platform_record_likes (record_id, user_key, user_name, created_at)
+                VALUES (?, ?, ?, ?)
+                """,
+                (record_id, user_key, user_name, now_iso()),
+            )
+    return get_record_interactions(user).get(record_id, {"like_count": 0, "liked_by_me": False, "comments": []})
+
+
+def add_record_comment(record_id, body, user):
+    record_id = (record_id or "").strip()
+    body = (body or "").strip()
+    if not record_id:
+        raise ValueError("缺少反馈记录")
+    if len(body) < 1:
+        raise ValueError("请输入评论内容")
+    if len(body) > 1000:
+        raise ValueError("评论最多 1000 个字符")
+    user_key, user_name = interaction_user(user)
+    comment = {
+        "id": "cmt_" + uuid.uuid4().hex[:16],
+        "record_id": record_id,
+        "author_key": user_key,
+        "author_name": user_name,
+        "body": body,
+        "created_at": now_iso(),
+    }
+    with sqlite3.connect(DB_PATH) as conn:
+        conn.execute(
+            """
+            INSERT INTO platform_record_comments
+              (id, record_id, author_key, author_name, body, created_at)
+            VALUES (?, ?, ?, ?, ?, ?)
+            """,
+            (
+                comment["id"],
+                comment["record_id"],
+                comment["author_key"],
+                comment["author_name"],
+                comment["body"],
+                comment["created_at"],
+            ),
+        )
+    return comment
 
 
 def public_base_url():
@@ -569,6 +694,10 @@ class PlatformHandler(BaseHTTPRequestHandler):
         if parsed.path == "/api/notification-settings":
             self.send_json(200, get_notification_payload())
             return
+        if parsed.path == "/api/record-interactions":
+            session = get_auth_session(self.cookie_value(COOKIE_NAME))
+            self.send_json(200, {"records": get_record_interactions((session or {}).get("user"))})
+            return
         if parsed.path == "/api/auth/me":
             session = get_auth_session(self.cookie_value(COOKIE_NAME))
             self.send_json(
@@ -643,6 +772,23 @@ class PlatformHandler(BaseHTTPRequestHandler):
 
             if parsed.path == "/api/notifications/read-all":
                 self.send_json(200, mark_notifications_read())
+                return
+
+            if parsed.path == "/api/record-likes":
+                length = int(self.headers.get("Content-Length", "0"))
+                payload = json.loads(self.rfile.read(length).decode("utf-8") or "{}")
+                session = get_auth_session(self.cookie_value(COOKIE_NAME))
+                interaction = toggle_record_like(payload.get("record_id"), (session or {}).get("user"))
+                self.send_json(200, {"interaction": interaction})
+                return
+
+            if parsed.path == "/api/record-comments":
+                length = int(self.headers.get("Content-Length", "0"))
+                payload = json.loads(self.rfile.read(length).decode("utf-8") or "{}")
+                session = get_auth_session(self.cookie_value(COOKIE_NAME))
+                comment = add_record_comment(payload.get("record_id"), payload.get("body"), (session or {}).get("user"))
+                interaction = get_record_interactions((session or {}).get("user")).get(payload.get("record_id"), {})
+                self.send_json(201, {"comment": comment, "interaction": interaction})
                 return
 
             if parsed.path == "/api/auth/logout":

@@ -777,7 +777,6 @@
       grid-template-columns: 1fr auto;
       gap: 16px;
       border-bottom: 1px solid var(--line);
-      cursor: pointer;
       background: #fff;
     }
 
@@ -822,6 +821,21 @@
       letter-spacing: 0;
     }
 
+    .item-title {
+      border: 0;
+      background: transparent;
+      padding: 0;
+      margin: 0;
+      color: inherit;
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .item-title:hover {
+      color: var(--blue);
+    }
+
     .excerpt {
       margin-top: 7px;
       color: #5b667a;
@@ -855,11 +869,16 @@
     }
 
     .metric {
+      border: 0;
+      background: transparent;
+      padding: 0;
+      cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 6px;
       font-size: 14px;
       white-space: nowrap;
+      color: inherit;
     }
 
     .metric.like {
@@ -867,9 +886,74 @@
       font-weight: 700;
     }
 
+    .metric.like.active {
+      color: #e11d48;
+    }
+
+    .metric.like.active svg {
+      fill: #ffe4e6;
+    }
+
     .metric svg {
       width: 19px;
       height: 19px;
+    }
+
+    .comment-panel {
+      grid-column: 1 / -1;
+      display: grid;
+      gap: 10px;
+      padding-top: 12px;
+      border-top: 1px dashed #edf1f7;
+    }
+
+    .comment-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .inline-comment {
+      background: #f8fafc;
+      border: 1px solid #edf1f7;
+      border-radius: 9px;
+      padding: 9px 10px;
+      font-size: 13px;
+    }
+
+    .inline-comment b {
+      margin-right: 8px;
+      color: #344054;
+    }
+
+    .inline-comment span {
+      color: #98a2b3;
+      font-size: 12px;
+    }
+
+    .comment-form {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .comment-form input {
+      height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      padding: 0 12px;
+      outline: none;
+    }
+
+    .comment-form button {
+      height: 38px;
+      border: 0;
+      border-radius: 9px;
+      background: var(--blue);
+      color: #fff;
+      padding: 0 14px;
+      cursor: pointer;
+      font-weight: 700;
     }
 
     .right {
@@ -1643,6 +1727,8 @@
       currentUser: null,
       authConfigured: false,
       authRedirectUrl: "",
+      interactions: {},
+      activeCommentRecord: "",
       plannerScope: "all",
       plannerSearch: "",
       plannerOwner: "",
@@ -1746,6 +1832,34 @@
       }
     }
 
+    async function loadRecordInteractions() {
+      try {
+        const response = await fetch("/api/record-interactions", { cache: "no-store" });
+        if (!response.ok) return {};
+        const payload = await response.json();
+        return payload.records || {};
+      } catch {
+        return {};
+      }
+    }
+
+    function applyInteractions(records) {
+      return records.map((record) => {
+        const interaction = state.interactions[record.recordId] || {};
+        const comments = interaction.comments || [];
+        const dbLikeCount = Number(interaction.like_count || 0);
+        return {
+          ...record,
+          baseLikeCount: record.baseLikeCount ?? record.likeCount,
+          baseCommentCount: record.baseCommentCount ?? record.commentCount,
+          likeCount: (record.baseLikeCount ?? record.likeCount) + dbLikeCount,
+          commentCount: (record.baseCommentCount ?? record.commentCount) + comments.length,
+          likedByMe: Boolean(interaction.liked_by_me),
+          comments
+        };
+      });
+    }
+
     async function loadNotificationSettings() {
       try {
         const response = await fetch("/api/notification-settings");
@@ -1831,10 +1945,11 @@
         loadNotificationSettings(),
         loadCurrentUser()
       ]);
-      state.records = [
+      state.interactions = await loadRecordInteractions();
+      state.records = applyInteractions([
         ...platformRecords,
         ...payload.data.map((row, index) => toRecord(row, index, payload, statusByToken))
-      ];
+      ]);
       fillFilters();
       renderRightPanel();
     }
@@ -2015,6 +2130,18 @@
     function renderItem(record) {
       const hot = record.likeCount > 0 || record.priority === "P1";
       const excerpt = strip(record.remark || record.description || "暂无补充说明");
+      const comments = (record.comments || []).slice(-3);
+      const commentPanel = state.activeCommentRecord === record.recordId ? `<div class="comment-panel">
+        ${comments.length ? `<div class="comment-list">${comments.map((comment) => `<div class="inline-comment">
+          <b>${escapeHtml(comment.author_name || "平台用户")}</b>
+          <span>${escapeHtml(dateLabel(comment.created_at).slice(5, 16))}</span>
+          <div>${escapeHtml(comment.body)}</div>
+        </div>`).join("")}</div>` : ""}
+        <form class="comment-form" data-comment-form="${escapeHtml(record.recordId)}">
+          <input name="comment" placeholder="回复这个反馈，补充复现步骤或处理建议" autocomplete="off" />
+          <button type="submit">回复</button>
+        </form>
+      </div>` : "";
       return `<article class="item" data-record-id="${escapeHtml(record.recordId)}">
         <div>
           <div class="labels">
@@ -2022,7 +2149,7 @@
             <span class="${tagClass(record.priority)}">${escapeHtml(record.priority)}</span>
             <span class="${tagClass(record.status)}">${escapeHtml(record.status)}</span>
           </div>
-          <h2>${escapeHtml(record.title)}</h2>
+          <h2><button class="item-title" data-open-record="${escapeHtml(record.recordId)}">${escapeHtml(record.title)}</button></h2>
           <div class="excerpt">${escapeHtml(excerpt)}</div>
           <div class="byline">
             <span>玩家-${escapeHtml(record.proposer)}</span>
@@ -2032,15 +2159,16 @@
           </div>
         </div>
         <div class="metrics">
-          <span class="metric like">
+          <button class="metric like ${record.likedByMe ? "active" : ""}" data-like-record="${escapeHtml(record.recordId)}" aria-label="点赞">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 10v11"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2h0a3.13 3.13 0 0 1 3 3.88Z"/></svg>
             ${record.likeCount}
-          </span>
-          <span class="metric">
+          </button>
+          <button class="metric" data-comment-record="${escapeHtml(record.recordId)}" aria-label="评论">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg>
             ${record.commentCount}
-          </span>
+          </button>
         </div>
+        ${commentPanel}
       </article>`;
     }
 
@@ -2331,6 +2459,62 @@
       }
     }
 
+    function updateRecordInteraction(recordId, interaction) {
+      state.interactions[recordId] = interaction || { like_count: 0, liked_by_me: false, comments: [] };
+      state.records = applyInteractions(state.records);
+      renderRightPanel();
+      renderFeed();
+    }
+
+    async function toggleLike(recordId) {
+      const record = state.records.find((item) => item.recordId === recordId);
+      if (!record) return;
+      record.likedByMe = !record.likedByMe;
+      record.likeCount += record.likedByMe ? 1 : -1;
+      renderFeed();
+      try {
+        const response = await fetch("/api/record-likes", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ record_id: recordId })
+        });
+        const payload = await response.json();
+        if (!response.ok) throw new Error(payload.error || "点赞失败");
+        updateRecordInteraction(recordId, payload.interaction);
+      } catch (error) {
+        await loadAllData();
+        renderFeed();
+        alert(error.message || "点赞失败，请稍后再试。");
+      }
+    }
+
+    async function submitInlineComment(form) {
+      const recordId = form.dataset.commentForm;
+      const input = form.elements.comment;
+      const body = input.value.trim();
+      if (!body) return;
+      const button = form.querySelector("button");
+      button.disabled = true;
+      button.textContent = "发送中";
+      try {
+        const response = await fetch("/api/record-comments", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ record_id: recordId, body })
+        });
+        const payload = await response.json();
+        if (!response.ok) throw new Error(payload.error || "评论失败");
+        input.value = "";
+        state.activeCommentRecord = recordId;
+        updateRecordInteraction(recordId, payload.interaction);
+      } catch (error) {
+        alert(error.message || "评论失败，请稍后再试。");
+      } finally {
+        button.disabled = false;
+        button.textContent = "回复";
+      }
+    }
+
     function setActiveMainTab(tabName) {
       state.activeTab = tabName;
       document.querySelectorAll(".tab").forEach((item) => item.classList.toggle("active", item.dataset.filter === tabName));
@@ -2510,6 +2694,22 @@
       });
       $("feed").addEventListener("click", (event) => {
         if (state.navMode === "planner-table" && handlePlannerInteraction(event)) return;
+        const titleButton = event.target.closest("[data-open-record]");
+        if (titleButton) {
+          openDetail(titleButton.dataset.openRecord);
+          return;
+        }
+        const likeButton = event.target.closest("[data-like-record]");
+        if (likeButton) {
+          toggleLike(likeButton.dataset.likeRecord);
+          return;
+        }
+        const commentButton = event.target.closest("[data-comment-record]");
+        if (commentButton) {
+          state.activeCommentRecord = state.activeCommentRecord === commentButton.dataset.commentRecord ? "" : commentButton.dataset.commentRecord;
+          renderFeed();
+          return;
+        }
         const notificationToggle = event.target.closest("[data-notification-key]");
         if (notificationToggle) {
           saveNotificationSetting(notificationToggle.dataset.notificationKey, notificationToggle.checked);
@@ -2519,8 +2719,12 @@
           markAllNotificationsRead();
           return;
         }
-        const item = event.target.closest(".item");
-        if (item) openDetail(item.dataset.recordId);
+      });
+      $("feed").addEventListener("submit", (event) => {
+        const form = event.target.closest("[data-comment-form]");
+        if (!form) return;
+        event.preventDefault();
+        submitInlineComment(form);
       });
       $("feed").addEventListener("input", handlePlannerInput);
       $("feed").addEventListener("change", handlePlannerInput);
