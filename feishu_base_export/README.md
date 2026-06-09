@@ -14,6 +14,27 @@ Open:
 http://127.0.0.1:8765/platform.html
 ```
 
+## Feishu Login
+
+Copy `.env.example` to `.env`, then fill in the Feishu self-built app credentials:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+```text
+PUBLIC_BASE_URL=http://127.0.0.1:8765
+FEISHU_REDIRECT_PATH=/auth/feishu/callback
+FEISHU_APP_ID=cli_xxxxxxxxxxxxxxxx
+FEISHU_APP_SECRET=replace-with-your-app-secret
+```
+
+Configure this redirect URL in Feishu Open Platform:
+
+```text
+http://127.0.0.1:8765/auth/feishu/callback
+```
+
 ## Main Files
 
 - `platform.html`: feedback plaza, submit dialog, notification settings, and planner table UI.

@@ -183,6 +183,79 @@
       white-space: nowrap;
     }
 
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .auth-widget {
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #475467;
+      font-size: 13px;
+    }
+
+    .auth-card {
+      height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 10px 0 8px;
+      box-shadow: 0 6px 14px rgba(16, 24, 40, 0.05);
+    }
+
+    .auth-avatar {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-weight: 900;
+    }
+
+    .auth-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .auth-action {
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: #344054;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0 12px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .auth-action.primary {
+      border-color: var(--blue);
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .auth-action:disabled {
+      cursor: not-allowed;
+      opacity: 0.68;
+    }
+
     .toolbar {
       background: var(--panel);
       border: 1px solid var(--line);
@@ -1401,10 +1474,13 @@
           <h1>反馈广场</h1>
           <div class="subtitle">看看大家遇到哪些问题，点赞支持你也遇到的，参与讨论帮助完善反馈</div>
         </div>
-        <button class="submit" id="topSubmit">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
-          提交反馈
-        </button>
+        <div class="top-actions">
+          <div class="auth-widget" id="authWidget"></div>
+          <button class="submit" id="topSubmit">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+            提交反馈
+          </button>
+        </div>
       </div>
 
       <section class="toolbar">
@@ -1564,6 +1640,9 @@
       notificationSettings: [],
       notifications: [],
       unreadCount: 0,
+      currentUser: null,
+      authConfigured: false,
+      authRedirectUrl: "",
       plannerScope: "all",
       plannerSearch: "",
       plannerOwner: "",
@@ -1685,6 +1764,58 @@
         state.notifications = [];
         state.unreadCount = 0;
       }
+    }
+
+    async function loadCurrentUser() {
+      try {
+        const response = await fetch("/api/auth/me");
+        const payload = await response.json();
+        state.currentUser = payload.authenticated ? payload.user : null;
+        state.authConfigured = Boolean(payload.configured);
+        state.authRedirectUrl = payload.redirect_url || "";
+      } catch {
+        state.currentUser = null;
+        state.authConfigured = false;
+      }
+      renderAuthWidget();
+    }
+
+    function renderAuthWidget() {
+      const user = state.currentUser;
+      if (user) {
+        const avatar = user.avatar_url
+          ? `<img src="${escapeHtml(user.avatar_url)}" alt="${escapeHtml(user.name)}" />`
+          : escapeHtml((user.name || "飞").slice(0, 1));
+        $("authWidget").innerHTML = `
+          <span class="auth-card">
+            <span class="auth-avatar">${avatar}</span>
+            <span>${escapeHtml(user.name || "飞书用户")}</span>
+          </span>
+          <button class="auth-action" id="logoutButton">退出</button>
+        `;
+        return;
+      }
+      if (!state.authConfigured) {
+        $("authWidget").innerHTML = `
+          <button class="auth-action" id="loginButton" title="请先在 feishu_base_export/.env 配置飞书应用信息" disabled>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/><path d="M21 19V5"/></svg>
+            配置飞书登录
+          </button>
+        `;
+        return;
+      }
+      $("authWidget").innerHTML = `
+        <button class="auth-action primary" id="loginButton">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/><path d="M21 19V5"/></svg>
+          飞书登录
+        </button>
+      `;
+    }
+
+    async function logout() {
+      await fetch("/api/auth/logout", { method: "POST" });
+      state.currentUser = null;
+      renderAuthWidget();
     }
 
     function parseCsv(text) {
@@ -1832,7 +1963,10 @@
       if (state.activeTab === "hot") items = items.filter((r) => r.likeCount > 0 || r.priority === "P1");
       if (state.activeTab === "pending") items = items.filter((r) => !isReplied(r));
       if (state.activeTab === "replied") items = items.filter(isReplied);
-      if (state.navMode === "mine") items = items.filter((r) => r.source === "platform" || r.proposer === "平台用户");
+      if (state.navMode === "mine") {
+        const me = state.currentUser?.name || "平台用户";
+        items = items.filter((r) => r.source === "platform" && r.proposer === me);
+      }
       if (state.navMode === "following") items = items.filter((r) => r.likeCount > 0 || Boolean(r.likeUsers));
       if (state.navMode === "mentions") items = items.filter(isReplied);
 
@@ -2133,7 +2267,7 @@
         const formData = new FormData();
         formData.append("feedback_type", new FormData($("submitForm")).get("feedbackType"));
         formData.append("description", description);
-        formData.append("proposer", "平台用户");
+        formData.append("proposer", state.currentUser?.name || "平台用户");
         submitState.files.forEach((file) => formData.append("attachments", file, file.name));
 
         const response = await fetch("/api/platform-feedback", {
@@ -2367,6 +2501,14 @@
         }
         openSubmitModal();
       });
+      $("authWidget").addEventListener("click", (event) => {
+        if (event.target.closest("#loginButton") && state.authConfigured) {
+          window.location.href = "/api/auth/feishu/login";
+        }
+        if (event.target.closest("#logoutButton")) {
+          logout();
+        }
+      });
       document.querySelectorAll(".nav button").forEach((button) => {
         button.addEventListener("click", () => handleSidebarNavigation(button));
       });
@@ -2412,7 +2554,8 @@
       const statusByToken = new Map(statusRows.map((row) => [row.file_token, row]));
       const [platformRecords] = await Promise.all([
         loadPlatformFeedback(),
-        loadNotificationSettings()
+        loadNotificationSettings(),
+        loadCurrentUser()
       ]);
       state.records = [
         ...platformRecords,

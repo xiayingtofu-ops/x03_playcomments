@@ -1,23 +1,48 @@
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
-from urllib.parse import unquote, urlparse
+from urllib.parse import parse_qs, quote, unquote, urlencode, urlparse
+from urllib.request import Request, urlopen
+from http.cookies import SimpleCookie
 import json
 import mimetypes
+import os
 import re
 import shutil
 import sqlite3
+import secrets
 import uuid
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 
 ROOT = Path(__file__).resolve().parent
 DB_PATH = ROOT / "platform_feedback.db"
 UPLOAD_ROOT = ROOT / "platform_uploads"
 MAX_BODY_SIZE = 220 * 1024 * 1024
+COOKIE_NAME = "x03_session"
+DEFAULT_BASE_URL = "http://127.0.0.1:8765"
+
+
+def load_env():
+    env_path = ROOT / ".env"
+    if not env_path.exists():
+        return
+    for raw_line in env_path.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
+
+
+load_env()
 
 
 def now_iso():
     return datetime.now(timezone.utc).isoformat()
+
+
+def iso_after(seconds):
+    return (datetime.now(timezone.utc) + timedelta(seconds=seconds)).isoformat()
 
 
 def safe_filename(name):
@@ -75,6 +100,17 @@ def init_db():
               receiver TEXT NOT NULL DEFAULT '未分配',
               read INTEGER NOT NULL DEFAULT 0,
               created_at TEXT NOT NULL
+            )
+            """
+        )
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS platform_auth_sessions (
+              id TEXT PRIMARY KEY,
+              state TEXT,
+              user_json TEXT,
+              created_at TEXT NOT NULL,
+              expires_at TEXT NOT NULL
             )
             """
         )
@@ -194,6 +230,159 @@ def mark_notifications_read():
     with sqlite3.connect(DB_PATH) as conn:
         conn.execute("UPDATE platform_notifications SET read = 1")
     return get_notification_payload()
+
+
+def public_base_url():
+    return (os.getenv("PUBLIC_BASE_URL") or os.getenv("BASE_URL") or DEFAULT_BASE_URL).rstrip("/")
+
+
+def redirect_path():
+    return os.getenv("FEISHU_REDIRECT_PATH", "/auth/feishu/callback")
+
+
+def feishu_redirect_url():
+    return public_base_url() + redirect_path()
+
+
+def feishu_auth_configured():
+    return bool(os.getenv("FEISHU_APP_ID") and os.getenv("FEISHU_APP_SECRET"))
+
+
+def feishu_authorize_url(state):
+    app_id = os.getenv("FEISHU_APP_ID")
+    if not app_id:
+        raise ValueError("缺少 FEISHU_APP_ID")
+    query = urlencode(
+        {
+            "app_id": app_id,
+            "redirect_uri": feishu_redirect_url(),
+            "state": state,
+        },
+        quote_via=quote,
+    )
+    return f"https://open.feishu.cn/open-apis/authen/v1/index?{query}"
+
+
+def post_json(url, payload, bearer=None):
+    headers = {"Content-Type": "application/json; charset=utf-8"}
+    if bearer:
+        headers["Authorization"] = f"Bearer {bearer}"
+    request = Request(
+        url,
+        data=json.dumps(payload).encode("utf-8"),
+        headers=headers,
+        method="POST",
+    )
+    with urlopen(request, timeout=12) as response:
+        return json.loads(response.read().decode("utf-8"))
+
+
+def get_json(url, bearer):
+    request = Request(url, headers={"Authorization": f"Bearer {bearer}"})
+    with urlopen(request, timeout=12) as response:
+        return json.loads(response.read().decode("utf-8"))
+
+
+def feishu_exchange_code(code):
+    app_token_response = post_json(
+        "https://open.feishu.cn/open-apis/auth/v3/app_access_token/internal",
+        {
+            "app_id": os.getenv("FEISHU_APP_ID"),
+            "app_secret": os.getenv("FEISHU_APP_SECRET"),
+        },
+    )
+    if app_token_response.get("code") != 0:
+        raise ValueError(app_token_response.get("msg") or "获取飞书应用凭证失败")
+
+    access_response = post_json(
+        "https://open.feishu.cn/open-apis/authen/v1/access_token",
+        {"grant_type": "authorization_code", "code": code},
+        bearer=app_token_response.get("app_access_token"),
+    )
+    if access_response.get("code") != 0:
+        raise ValueError(access_response.get("msg") or "飞书授权码交换失败")
+
+    user_access_token = (access_response.get("data") or {}).get("access_token")
+    if not user_access_token:
+        raise ValueError("飞书没有返回用户访问凭证")
+
+    user_response = get_json(
+        "https://open.feishu.cn/open-apis/authen/v1/user_info",
+        bearer=user_access_token,
+    )
+    if user_response.get("code") != 0:
+        raise ValueError(user_response.get("msg") or "获取飞书用户信息失败")
+    data = user_response.get("data") or {}
+    return {
+        "open_id": data.get("open_id"),
+        "union_id": data.get("union_id"),
+        "name": data.get("name") or data.get("en_name") or "飞书用户",
+        "avatar_url": data.get("avatar_url"),
+        "email": data.get("email"),
+        "mobile": data.get("mobile"),
+        "tenant_key": data.get("tenant_key"),
+        "login_at": now_iso(),
+    }
+
+
+def create_login_session():
+    session_id = secrets.token_urlsafe(32)
+    state = secrets.token_urlsafe(24)
+    with sqlite3.connect(DB_PATH) as conn:
+        conn.execute(
+            """
+            INSERT INTO platform_auth_sessions (id, state, user_json, created_at, expires_at)
+            VALUES (?, ?, NULL, ?, ?)
+            """,
+            (session_id, state, now_iso(), iso_after(600)),
+        )
+    return session_id, state
+
+
+def get_auth_session(session_id):
+    if not session_id:
+        return None
+    with sqlite3.connect(DB_PATH) as conn:
+        conn.row_factory = sqlite3.Row
+        row = conn.execute(
+            "SELECT * FROM platform_auth_sessions WHERE id = ?",
+            (session_id,),
+        ).fetchone()
+    if not row:
+        return None
+    item = row_to_dict(row)
+    try:
+        expired = datetime.fromisoformat(item["expires_at"]) < datetime.now(timezone.utc)
+    except ValueError:
+        expired = True
+    if expired:
+        delete_auth_session(session_id)
+        return None
+    if item.get("user_json"):
+        item["user"] = json.loads(item["user_json"])
+    return item
+
+
+def complete_auth_session(session_id, state, user):
+    session = get_auth_session(session_id)
+    if not session or not session.get("state") or session.get("state") != state:
+        raise ValueError("登录状态已失效，请重新登录")
+    with sqlite3.connect(DB_PATH) as conn:
+        conn.execute(
+            """
+            UPDATE platform_auth_sessions
+            SET state = NULL, user_json = ?, expires_at = ?
+            WHERE id = ?
+            """,
+            (json.dumps(user, ensure_ascii=False), iso_after(30 * 24 * 60 * 60), session_id),
+        )
+
+
+def delete_auth_session(session_id):
+    if not session_id:
+        return
+    with sqlite3.connect(DB_PATH) as conn:
+        conn.execute("DELETE FROM platform_auth_sessions WHERE id = ?", (session_id,))
 
 
 def parse_content_disposition(value):
@@ -327,6 +516,39 @@ class PlatformHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(data)
 
+    def cookie_value(self, name):
+        cookie = SimpleCookie(self.headers.get("Cookie"))
+        morsel = cookie.get(name)
+        return morsel.value if morsel else None
+
+    def set_session_cookie(self, session_id, max_age=30 * 24 * 60 * 60):
+        parts = [
+            f"{COOKIE_NAME}={session_id}",
+            "Path=/",
+            "HttpOnly",
+            "SameSite=Lax",
+            f"Max-Age={max_age}",
+        ]
+        if public_base_url().startswith("https://"):
+            parts.append("Secure")
+        self.send_header("Set-Cookie", "; ".join(parts))
+
+    def clear_session_cookie(self):
+        self.send_header(
+            "Set-Cookie",
+            f"{COOKIE_NAME}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0",
+        )
+
+    def redirect(self, location, cookie_session_id=None, clear_cookie=False):
+        self.send_response(302)
+        self.send_header("Location", location)
+        if cookie_session_id:
+            self.set_session_cookie(cookie_session_id)
+        if clear_cookie:
+            self.clear_session_cookie()
+        self.send_header("Content-Length", "0")
+        self.end_headers()
+
     def do_GET(self):
         parsed = urlparse(self.path)
         if parsed.path == "/api/platform-feedback":
@@ -334,6 +556,50 @@ class PlatformHandler(BaseHTTPRequestHandler):
             return
         if parsed.path == "/api/notification-settings":
             self.send_json(200, get_notification_payload())
+            return
+        if parsed.path == "/api/auth/me":
+            session = get_auth_session(self.cookie_value(COOKIE_NAME))
+            self.send_json(
+                200,
+                {
+                    "authenticated": bool(session and session.get("user")),
+                    "user": (session or {}).get("user"),
+                    "configured": feishu_auth_configured(),
+                    "login_url": "/api/auth/feishu/login",
+                    "logout_url": "/api/auth/logout",
+                    "redirect_url": feishu_redirect_url(),
+                },
+            )
+            return
+        if parsed.path == "/api/auth/feishu/login":
+            try:
+                if not feishu_auth_configured():
+                    self.send_json(
+                        500,
+                        {
+                            "error": "飞书登录尚未配置，请先设置 FEISHU_APP_ID 和 FEISHU_APP_SECRET。",
+                            "redirect_url": feishu_redirect_url(),
+                        },
+                    )
+                    return
+                session_id, state = create_login_session()
+                self.redirect(feishu_authorize_url(state), cookie_session_id=session_id)
+            except Exception as exc:
+                self.send_json(500, {"error": str(exc)})
+            return
+        if parsed.path == redirect_path():
+            query = parse_qs(parsed.query)
+            code = (query.get("code") or [""])[0]
+            state = (query.get("state") or [""])[0]
+            session_id = self.cookie_value(COOKIE_NAME)
+            try:
+                if not code:
+                    raise ValueError("飞书没有返回授权码")
+                user = feishu_exchange_code(code)
+                complete_auth_session(session_id, state, user)
+                self.redirect("/platform.html?login=success")
+            except Exception as exc:
+                self.redirect(f"/platform.html?auth_error={quote(str(exc))}", clear_cookie=True)
             return
         self.serve_static(parsed.path)
 
@@ -365,6 +631,18 @@ class PlatformHandler(BaseHTTPRequestHandler):
 
             if parsed.path == "/api/notifications/read-all":
                 self.send_json(200, mark_notifications_read())
+                return
+
+            if parsed.path == "/api/auth/logout":
+                session_id = self.cookie_value(COOKIE_NAME)
+                delete_auth_session(session_id)
+                self.send_response(200)
+                self.clear_session_cookie()
+                data = json.dumps({"ok": True}).encode("utf-8")
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.send_header("Content-Length", str(len(data)))
+                self.end_headers()
+                self.wfile.write(data)
                 return
 
             self.send_json(404, {"error": "接口不存在"})
