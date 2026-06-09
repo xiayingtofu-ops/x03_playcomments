@@ -59,11 +59,18 @@ def init_db():
               feedback_type TEXT NOT NULL,
               description TEXT NOT NULL,
               proposer TEXT NOT NULL DEFAULT '平台用户',
+              proposer_key TEXT,
+              proposer_email TEXT,
               status TEXT NOT NULL DEFAULT '未填',
               created_at TEXT NOT NULL
             )
             """
         )
+        columns = {row[1] for row in conn.execute("PRAGMA table_info(platform_feedback)").fetchall()}
+        if "proposer_key" not in columns:
+            conn.execute("ALTER TABLE platform_feedback ADD COLUMN proposer_key TEXT")
+        if "proposer_email" not in columns:
+            conn.execute("ALTER TABLE platform_feedback ADD COLUMN proposer_email TEXT")
         conn.execute(
             """
             CREATE TABLE IF NOT EXISTS platform_feedback_attachments (
@@ -117,6 +124,17 @@ def init_db():
         conn.execute(
             """
             CREATE TABLE IF NOT EXISTS platform_record_likes (
+              record_id TEXT NOT NULL,
+              user_key TEXT NOT NULL,
+              user_name TEXT NOT NULL,
+              created_at TEXT NOT NULL,
+              PRIMARY KEY (record_id, user_key)
+            )
+            """
+        )
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS platform_record_follows (
               record_id TEXT NOT NULL,
               user_key TEXT NOT NULL,
               user_name TEXT NOT NULL,
@@ -261,8 +279,39 @@ def interaction_user(user):
     return user.get("open_id") or user.get("union_id") or user.get("name") or "guest", user.get("name") or "飞书用户"
 
 
+def admin_values():
+    raw = os.getenv("PLATFORM_ADMIN_USERS", "")
+    return {item.strip().lower() for item in raw.split(",") if item.strip()}
+
+
+def is_admin_user(user):
+    if not user:
+        return False
+    values = admin_values()
+    if not values:
+        return False
+    candidates = {
+        str(user.get("open_id") or "").lower(),
+        str(user.get("union_id") or "").lower(),
+        str(user.get("email") or "").lower(),
+        str(user.get("name") or "").lower(),
+    }
+    return bool(values & candidates)
+
+
+def public_user(user):
+    if not user:
+        return None
+    item = dict(user)
+    item["is_admin"] = is_admin_user(user)
+    return item
+
+
 def get_record_interactions(user=None):
     user_key, _ = interaction_user(user)
+    def default_interaction():
+        return {"like_count": 0, "liked_by_me": False, "follow_count": 0, "followed_by_me": False, "comments": []}
+
     with sqlite3.connect(DB_PATH) as conn:
         conn.row_factory = sqlite3.Row
         likes = conn.execute(
@@ -270,6 +319,15 @@ def get_record_interactions(user=None):
             SELECT record_id, COUNT(*) AS like_count,
                    SUM(CASE WHEN user_key = ? THEN 1 ELSE 0 END) AS liked_by_me
             FROM platform_record_likes
+            GROUP BY record_id
+            """,
+            (user_key,),
+        ).fetchall()
+        follows = conn.execute(
+            """
+            SELECT record_id, COUNT(*) AS follow_count,
+                   SUM(CASE WHEN user_key = ? THEN 1 ELSE 0 END) AS followed_by_me
+            FROM platform_record_follows
             GROUP BY record_id
             """,
             (user_key,),
@@ -284,13 +342,19 @@ def get_record_interactions(user=None):
     data = {}
     for row in likes:
         item = row_to_dict(row)
-        data.setdefault(item["record_id"], {"like_count": 0, "liked_by_me": False, "comments": []})
+        data.setdefault(item["record_id"], default_interaction())
         data[item["record_id"]]["like_count"] = item["like_count"]
         data[item["record_id"]]["liked_by_me"] = bool(item["liked_by_me"])
 
+    for row in follows:
+        item = row_to_dict(row)
+        data.setdefault(item["record_id"], default_interaction())
+        data[item["record_id"]]["follow_count"] = item["follow_count"]
+        data[item["record_id"]]["followed_by_me"] = bool(item["followed_by_me"])
+
     for row in comments:
         item = row_to_dict(row)
-        data.setdefault(item["record_id"], {"like_count": 0, "liked_by_me": False, "comments": []})
+        data.setdefault(item["record_id"], default_interaction())
         data[item["record_id"]]["comments"].append(item)
     return data
 
@@ -317,7 +381,32 @@ def toggle_record_like(record_id, user):
                 """,
                 (record_id, user_key, user_name, now_iso()),
             )
-    return get_record_interactions(user).get(record_id, {"like_count": 0, "liked_by_me": False, "comments": []})
+    return get_record_interactions(user).get(record_id, {"like_count": 0, "liked_by_me": False, "follow_count": 0, "followed_by_me": False, "comments": []})
+
+
+def toggle_record_follow(record_id, user):
+    if not record_id:
+        raise ValueError("缺少反馈记录")
+    user_key, user_name = interaction_user(user)
+    with sqlite3.connect(DB_PATH) as conn:
+        exists = conn.execute(
+            "SELECT 1 FROM platform_record_follows WHERE record_id = ? AND user_key = ?",
+            (record_id, user_key),
+        ).fetchone()
+        if exists:
+            conn.execute(
+                "DELETE FROM platform_record_follows WHERE record_id = ? AND user_key = ?",
+                (record_id, user_key),
+            )
+        else:
+            conn.execute(
+                """
+                INSERT INTO platform_record_follows (record_id, user_key, user_name, created_at)
+                VALUES (?, ?, ?, ?)
+                """,
+                (record_id, user_key, user_name, now_iso()),
+            )
+    return get_record_interactions(user).get(record_id, {"like_count": 0, "liked_by_me": False, "follow_count": 0, "followed_by_me": False, "comments": []})
 
 
 def add_record_comment(record_id, body, user):
@@ -567,10 +656,13 @@ def parse_multipart(content_type, body):
     return fields, files
 
 
-def create_feedback(fields, files):
+def create_feedback(fields, files, user=None):
     description = (fields.get("description") or "").strip()
     feedback_type = (fields.get("feedback_type") or "战斗模块").strip()
-    proposer = (fields.get("proposer") or "平台用户").strip()
+    user_key, user_name = interaction_user(user)
+    proposer = (user_name if user else (fields.get("proposer") or "平台用户")).strip()
+    proposer_key = user_key if user else ""
+    proposer_email = (user or {}).get("email") or ""
 
     if len(description) < 10:
         raise ValueError("请至少输入 10 个字符")
@@ -586,10 +678,11 @@ def create_feedback(fields, files):
     with sqlite3.connect(DB_PATH) as conn:
         conn.execute(
             """
-            INSERT INTO platform_feedback (id, feedback_type, description, proposer, status, created_at)
-            VALUES (?, ?, ?, ?, ?, ?)
+            INSERT INTO platform_feedback
+              (id, feedback_type, description, proposer, proposer_key, proposer_email, status, created_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
             """,
-            (feedback_id, feedback_type, description, proposer, "未填", created_at),
+            (feedback_id, feedback_type, description, proposer, proposer_key, proposer_email, "未填", created_at),
         )
 
         for index, file_item in enumerate(files, start=1):
@@ -632,6 +725,49 @@ def create_feedback(fields, files):
 
     item = get_feedback(feedback_id)
     item["attachments"] = saved_files
+    return item
+
+
+def can_delete_feedback(item, user):
+    if not item or not user:
+        return False
+    if is_admin_user(user):
+        return True
+    user_key, user_name = interaction_user(user)
+    candidates = {
+        user_key,
+        user.get("open_id") or "",
+        user.get("union_id") or "",
+        user.get("email") or "",
+    }
+    candidates = {value for value in candidates if value}
+    owner_keys = {item.get("proposer_key") or "", item.get("proposer_email") or ""}
+    owner_keys = {value for value in owner_keys if value}
+    if candidates & owner_keys:
+        return True
+    return bool(item.get("proposer") and item.get("proposer") == user_name)
+
+
+def delete_feedback(feedback_id, user):
+    feedback_id = (feedback_id or "").strip()
+    if not feedback_id:
+        raise ValueError("缺少反馈记录")
+    item = get_feedback(feedback_id)
+    if not item:
+        raise FileNotFoundError("记录不存在")
+    if not can_delete_feedback(item, user):
+        raise PermissionError("你没有权限删除这条记录")
+
+    with sqlite3.connect(DB_PATH) as conn:
+        conn.execute("DELETE FROM platform_record_likes WHERE record_id = ?", (feedback_id,))
+        conn.execute("DELETE FROM platform_record_follows WHERE record_id = ?", (feedback_id,))
+        conn.execute("DELETE FROM platform_record_comments WHERE record_id = ?", (feedback_id,))
+        conn.execute("DELETE FROM platform_feedback_attachments WHERE feedback_id = ?", (feedback_id,))
+        conn.execute("DELETE FROM platform_feedback WHERE id = ?", (feedback_id,))
+
+    upload_dir = (UPLOAD_ROOT / feedback_id).resolve()
+    if str(upload_dir).startswith(str(UPLOAD_ROOT.resolve())):
+        shutil.rmtree(upload_dir, ignore_errors=True)
     return item
 
 
@@ -704,7 +840,7 @@ class PlatformHandler(BaseHTTPRequestHandler):
                 200,
                 {
                     "authenticated": bool(session and session.get("user")),
-                    "user": (session or {}).get("user"),
+                    "user": public_user((session or {}).get("user")),
                     "configured": feishu_auth_configured(),
                     "login_url": "/api/auth/feishu/login",
                     "logout_url": "/api/auth/logout",
@@ -759,7 +895,8 @@ class PlatformHandler(BaseHTTPRequestHandler):
                 else:
                     fields = json.loads(body.decode("utf-8") or "{}")
                     files = []
-                feedback = create_feedback(fields, files)
+                session = get_auth_session(self.cookie_value(COOKIE_NAME))
+                feedback = create_feedback(fields, files, (session or {}).get("user"))
                 self.send_json(201, {"feedback": feedback})
                 return
 
@@ -779,6 +916,14 @@ class PlatformHandler(BaseHTTPRequestHandler):
                 payload = json.loads(self.rfile.read(length).decode("utf-8") or "{}")
                 session = get_auth_session(self.cookie_value(COOKIE_NAME))
                 interaction = toggle_record_like(payload.get("record_id"), (session or {}).get("user"))
+                self.send_json(200, {"interaction": interaction})
+                return
+
+            if parsed.path == "/api/record-follows":
+                length = int(self.headers.get("Content-Length", "0"))
+                payload = json.loads(self.rfile.read(length).decode("utf-8") or "{}")
+                session = get_auth_session(self.cookie_value(COOKIE_NAME))
+                interaction = toggle_record_follow(payload.get("record_id"), (session or {}).get("user"))
                 self.send_json(200, {"interaction": interaction})
                 return
 
@@ -804,10 +949,31 @@ class PlatformHandler(BaseHTTPRequestHandler):
                 return
 
             self.send_json(404, {"error": "接口不存在"})
+        except PermissionError as exc:
+            self.send_json(403, {"error": str(exc)})
         except ValueError as exc:
             self.send_json(400, {"error": str(exc)})
         except Exception as exc:
             self.send_json(500, {"error": f"保存失败：{exc}"})
+
+    def do_DELETE(self):
+        parsed = urlparse(self.path)
+        try:
+            match = re.fullmatch(r"/api/platform-feedback/([^/]+)", parsed.path)
+            if match:
+                session = get_auth_session(self.cookie_value(COOKIE_NAME))
+                delete_feedback(unquote(match.group(1)), (session or {}).get("user"))
+                self.send_json(200, {"ok": True})
+                return
+            self.send_json(404, {"error": "接口不存在"})
+        except FileNotFoundError as exc:
+            self.send_json(404, {"error": str(exc)})
+        except PermissionError as exc:
+            self.send_json(403, {"error": str(exc)})
+        except ValueError as exc:
+            self.send_json(400, {"error": str(exc)})
+        except Exception as exc:
+            self.send_json(500, {"error": f"删除失败：{exc}"})
 
     def serve_static(self, request_path):
         relative = unquote(request_path.lstrip("/")) or "platform.html"
