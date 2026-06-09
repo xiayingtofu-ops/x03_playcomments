@@ -25,6 +25,7 @@ Copy-Item .env.example .env
 ```text
 PUBLIC_BASE_URL=http://127.0.0.1:8765
 FEISHU_REDIRECT_PATH=/auth/feishu/callback
+FEISHU_AUTH_REQUIRED=true
 FEISHU_APP_ID=cli_xxxxxxxxxxxxxxxx
 FEISHU_APP_SECRET=replace-with-your-app-secret
 ```
@@ -34,6 +35,8 @@ Configure this redirect URL in Feishu Open Platform:
 ```text
 http://127.0.0.1:8765/auth/feishu/callback
 ```
+
+With `FEISHU_AUTH_REQUIRED=true`, opening or refreshing `/platform.html` redirects to Feishu login before the platform is shown. If credentials are not configured yet, the page stays available and shows a configuration prompt instead of redirecting to a broken login flow.
 
 ## Main Files
 

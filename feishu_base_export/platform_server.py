@@ -248,6 +248,11 @@ def feishu_auth_configured():
     return bool(os.getenv("FEISHU_APP_ID") and os.getenv("FEISHU_APP_SECRET"))
 
 
+def feishu_auth_required():
+    value = os.getenv("FEISHU_AUTH_REQUIRED", "true").strip().lower()
+    return value not in {"0", "false", "no", "off"}
+
+
 def feishu_authorize_url(state):
     app_id = os.getenv("FEISHU_APP_ID")
     if not app_id:
@@ -551,6 +556,13 @@ class PlatformHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         parsed = urlparse(self.path)
+        if parsed.path in {"", "/", "/platform.html"} and feishu_auth_required() and feishu_auth_configured():
+            session = get_auth_session(self.cookie_value(COOKIE_NAME))
+            if not session or not session.get("user"):
+                session_id, state = create_login_session()
+                self.redirect(feishu_authorize_url(state), cookie_session_id=session_id)
+                return
+
         if parsed.path == "/api/platform-feedback":
             self.send_json(200, {"feedback": list_feedback()})
             return

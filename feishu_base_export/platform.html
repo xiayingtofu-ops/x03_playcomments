@@ -1818,6 +1818,40 @@
       renderAuthWidget();
     }
 
+    async function loadAllData() {
+      const [recordsResponse, statusResponse] = await Promise.all([
+        fetch("records_raw.json", { cache: "no-store" }),
+        fetch("attachment_download_status.csv", { cache: "no-store" })
+      ]);
+      const payload = (await recordsResponse.json()).data;
+      const statusRows = parseCsv(await statusResponse.text());
+      const statusByToken = new Map(statusRows.map((row) => [row.file_token, row]));
+      const [platformRecords] = await Promise.all([
+        loadPlatformFeedback(),
+        loadNotificationSettings(),
+        loadCurrentUser()
+      ]);
+      state.records = [
+        ...platformRecords,
+        ...payload.data.map((row, index) => toRecord(row, index, payload, statusByToken))
+      ];
+      fillFilters();
+      renderRightPanel();
+    }
+
+    async function refreshPlatformData() {
+      const previous = $("topSubmit").innerHTML;
+      $("topSubmit").disabled = true;
+      $("topSubmit").innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M3 21v-5h5"/><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M16 8h5V3"/></svg>刷新中';
+      try {
+        await loadAllData();
+        renderFeed();
+      } finally {
+        $("topSubmit").disabled = false;
+        $("topSubmit").innerHTML = previous;
+      }
+    }
+
     function parseCsv(text) {
       const rows = [];
       let row = [];
@@ -2496,7 +2530,7 @@
       });
       $("topSubmit").addEventListener("click", () => {
         if (state.navMode === "planner-table") {
-          renderPlannerTable();
+          refreshPlatformData();
           return;
         }
         openSubmitModal();
@@ -2545,24 +2579,7 @@
     }
 
     async function init() {
-      const [recordsResponse, statusResponse] = await Promise.all([
-        fetch("records_raw.json"),
-        fetch("attachment_download_status.csv")
-      ]);
-      const payload = (await recordsResponse.json()).data;
-      const statusRows = parseCsv(await statusResponse.text());
-      const statusByToken = new Map(statusRows.map((row) => [row.file_token, row]));
-      const [platformRecords] = await Promise.all([
-        loadPlatformFeedback(),
-        loadNotificationSettings(),
-        loadCurrentUser()
-      ]);
-      state.records = [
-        ...platformRecords,
-        ...payload.data.map((row, index) => toRecord(row, index, payload, statusByToken))
-      ];
-      fillFilters();
-      renderRightPanel();
+      await loadAllData();
       renderFeed();
       bindEvents();
     }
