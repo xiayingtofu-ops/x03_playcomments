@@ -20,11 +20,18 @@ __pycache__/
 feishu_base_export/attachments/
 feishu_base_export/platform_uploads/
 feishu_base_export/feishu_base_records.sqlite.sql
+feedback-platform-deploy/attachments/
+feedback-platform-deploy/platform_uploads/
+feedback-platform-deploy-8766/attachments/
+feedback-platform-deploy-8766/platform_uploads/
 
 # Large/generated local exports
 already/
 data/
 exports/
+*.tgz
+*.tar.gz
+*.bak_*
 X03开荒版本测试反馈清单_数据表_表格.csv
 
 # OS/editor noise
