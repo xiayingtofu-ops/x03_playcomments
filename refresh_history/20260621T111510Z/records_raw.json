@@ -1,0 +1,886 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "data": [
+      [
+        "HUD上有护盾的时候，护盾和血条关联度不高，很难联想到这个是护盾",
+        null,
+        [
+          "P2"
+        ],
+        [
+          "处理中"
+        ],
+        "hud设计包括",
+        [
+          {
+            "id": "ou_867e85cdf78026203200256845dee680",
+            "name": "姜勋"
+          }
+        ],
+        [
+          {
+            "id": "ou_a83132572f284fa1affc74a47937d2e0",
+            "name": "毛逸凡"
+          }
+        ],
+        1,
+        "2026-05-26 16:40:24",
+        [
+          {
+            "id": "ou_23342d843b34735d36e44ee1efe0c37f",
+            "name": "王嘉西"
+          }
+        ],
+        [
+          {
+            "file_token": "MMXlbLr0HoP8inx1AmKcv3mvnDh",
+            "name": "2026-05-27T08-40-49-729Z-f2ivag.jpg",
+            "size": 314410
+          }
+        ],
+        null,
+        "rec27tqRSCY5HJ"
+      ],
+      [
+        "大锤战斗体验问题：\n1.第二个技能可以用类似鲁班大师的提示来提示玩家技能机制是和普攻次数相关的。\n2.二技能触发的动作最好是一个特殊的普攻动作，类似DOTA2的大锤\n3.放大招后不知道为什么停顿的时间显著的比攻击间隔要长。",
+        null,
+        [
+          "P2"
+        ],
+        null,
+        null,
+        [
+          {
+            "id": "ou_867e85cdf78026203200256845dee680",
+            "name": "姜勋"
+          }
+        ],
+        [
+          {
+            "id": "ou_b02713d5214e4c3410d05ea8a2ca0fdb",
+            "name": "李承轩"
+          }
+        ],
+        null,
+        "2026-05-29 13:57:50",
+        null,
+        [
+          {
+            "file_token": "E4g2buWvtokm2VxVNvLcVrAenMf",
+            "name": "2026-05-29T05-58-00-005Z-6utayo.jpg",
+            "size": 644559
+          }
+        ],
+        null,
+        "rec27uzHvL4c4T"
+      ],
+      [
+        "点击技能显示的tips太窄了，文字排版很不好看",
+        [
+          {
+            "file_token": "SVDLbAXo0oICLxxsFeccoBNvn6b",
+            "name": "image.png",
+            "size": 79938
+          }
+        ],
+        [
+          "P2"
+        ],
+        [
+          "处理中"
+        ],
+        "hud设计包括",
+        [
+          {
+            "id": "ou_867e85cdf78026203200256845dee680",
+            "name": "姜勋"
+          }
+        ],
+        [
+          {
+            "id": "ou_b02713d5214e4c3410d05ea8a2ca0fdb",
+            "name": "李承轩"
+          }
+        ],
+        null,
+        "2026-05-29 16:26:12",
+        null,
+        [
+          {
+            "file_token": "VHHcbLWYloqruNx5moxchECVn1d",
+            "name": "2026-05-29T08-26-21-793Z-40oo0g.jpg",
+            "size": 415633
+          }
+        ],
+        null,
+        "rec27uCefsOU6o"
+      ],
+      [
+        "主动模组也应该可以点击查看tips",
+        [
+          {
+            "file_token": "Q9EmbGQ0JoWnQaxrOMuc2wvnnic",
+            "name": "image.png",
+            "size": 47465
+          }
+        ],
+        [
+          "P2"
+        ],
+        [
+          "处理中"
+        ],
+        null,
+        [
+          {
+            "id": "ou_867e85cdf78026203200256845dee680",
+            "name": "姜勋"
+          }
+        ],
+        [
+          {
+            "id": "ou_b02713d5214e4c3410d05ea8a2ca0fdb",
+            "name": "李承轩"
+          }
+        ],
+        null,
+        "2026-05-29 16:26:42",
+        null,
+        [
+          {
+            "file_token": "OBS2bjxXIooubzxbA9zcni5intc",
+            "name": "2026-05-29T08-26-51-154Z-3k3zl0.jpg",
+            "size": 371047
+          }
+        ],
+        null,
+        "rec27uCeLfw5ju"
+      ],
+      [
+        "资源溢出后参考三谋字体变红",
+        [
+          {
+            "file_token": "EN1VbHl2Goo6VxxaCOecfUKRn34",
+            "name": "image.png",
+            "size": 67166
+          }
+        ],
+        [
+          "P2"
+        ],
+        null,
+        null,
+        [
+          {
+            "id": "ou_ff6fd02a025c4450056b8e8d725d3408",
+            "name": "李尧"
+          }
+        ],
+        [
+          {
+            "id": "ou_b02713d5214e4c3410d05ea8a2ca0fdb",
+            "name": "李承轩"
+          }
+        ],
+        1,
+        "2026-06-01 10:23:25",
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        [
+          {
+            "file_token": "Ec32bZmWHoJT29xSuLsccaw7nLb",
+            "name": "2026-06-01T02-23-34-719Z-qs6m0z.jpg",
+            "size": 425864
+          }
+        ],
+        null,
+        "rec27vHEnnmNEb"
+      ],
+      [
+        "手机上点击技能准备施放时，会出现对应技能说明，里面文本有超链接词汇，但是我手指处于施放位置无法同时点超链接文本，所以这里交互上会感觉挺奇怪的。",
+        [
+          {
+            "file_token": "YwD2buqVVoK5sDxkW7UchTf9nyh",
+            "name": "image.png",
+            "size": 2305825
+          }
+        ],
+        [
+          "P2"
+        ],
+        null,
+        null,
+        [
+          {
+            "id": "ou_ff6fd02a025c4450056b8e8d725d3408",
+            "name": "李尧"
+          }
+        ],
+        [
+          {
+            "id": "ou_d5bcd55aaac47d083aba141be3b89066",
+            "name": "黄静茹"
+          }
+        ],
+        null,
+        "2026-06-12 14:09:08",
+        null,
+        [
+          {
+            "file_token": "QhccbKYfnoQd9nxj5CHc694snVf",
+            "name": "2026-06-12T06-10-51-677Z-ay5s65.jpg",
+            "size": 478681
+          }
+        ],
+        null,
+        "recvmj6AVJPAXK"
+      ],
+      [
+        "生产线槽位适合做成长反馈——>（让玩家希望填充产线而增加打虫的动力，数值循环变强——因为效率设计后置\n可以考虑在玩家等级上投放一些\n玩家前期如果不填充产线很难自发意识到需要通过重复刷虫子来升级",
+        null,
+        [
+          "P2"
+        ],
+        null,
+        null,
+        [
+          {
+            "id": "ou_4904430abbf99b4d7d8fa0c21760fbf2",
+            "name": "刘洋"
+          }
+        ],
+        [
+          {
+            "id": "ou_b02713d5214e4c3410d05ea8a2ca0fdb",
+            "name": "李承轩"
+          }
+        ],
+        null,
+        "2026-05-20 22:40:15",
+        null,
+        [
+          {
+            "file_token": "SYV5bSTd3o6POGx4Za2cJqrHnRh",
+            "name": "2026-05-27T08-40-39-939Z-4erq8g.jpg",
+            "size": 720656
+          }
+        ],
+        null,
+        "recvkaHaMOlvyG"
+      ],
+      [
+        "荣誉值的说明按钮点了没反应",
+        [
+          {
+            "file_token": "JaAdbGJyqobVBRxNo6RcBK4wnIf",
+            "name": "image.png",
+            "size": 1242072
+          }
+        ],
+        [
+          "P2"
+        ],
+        [
+          "处理中"
+        ],
+        null,
+        [
+          {
+            "id": "ou_23342d843b34735d36e44ee1efe0c37f",
+            "name": "王嘉西"
+          }
+        ],
+        [
+          {
+            "id": "ou_d8d7c174961e537f1b9669c085b5d82a",
+            "name": "杨心权"
+          }
+        ],
+        1,
+        "2026-05-27 14:35:58",
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        [
+          {
+            "file_token": "Om6ObljrEoqQVSxglK5cAO8enth",
+            "name": "2026-06-08T09-44-24-245Z-bq93hi.jpg",
+            "size": 268364
+          }
+        ],
+        null,
+        "recvkNEWcjdMo6"
+      ],
+      [
+        "章节任务的标题和描述有点过于和游戏进程不符了，感觉不太好",
+        null,
+        [
+          "P2"
+        ],
+        null,
+        null,
+        [
+          {
+            "id": "ou_23342d843b34735d36e44ee1efe0c37f",
+            "name": "王嘉西"
+          }
+        ],
+        [
+          {
+            "id": "ou_b02713d5214e4c3410d05ea8a2ca0fdb",
+            "name": "李承轩"
+          }
+        ],
+        null,
+        "2026-05-29 09:51:02",
+        null,
+        [
+          {
+            "file_token": "BLeNbGODLo2tNyxYgeDcPDIjnkb",
+            "name": "2026-05-29T01-51-11-761Z-wjjcig.jpg",
+            "size": 416584
+          }
+        ],
+        null,
+        "rec27uvuOsu2BX"
+      ],
+      [
+        "点击复制按钮后，弹一个toast给予反馈“UID（昵称）复制成功”",
+        [
+          {
+            "file_token": "TPumbjOgfot1hLxMETscDpxgnxh",
+            "name": "image.png",
+            "size": 68910
+          }
+        ],
+        [
+          "P2"
+        ],
+        [
+          "处理中"
+        ],
+        null,
+        [
+          {
+            "id": "ou_23342d843b34735d36e44ee1efe0c37f",
+            "name": "王嘉西"
+          }
+        ],
+        [
+          {
+            "id": "ou_b02713d5214e4c3410d05ea8a2ca0fdb",
+            "name": "李承轩"
+          }
+        ],
+        null,
+        "2026-05-29 13:39:22",
+        null,
+        [
+          {
+            "file_token": "CvfLbYUNYoTvvJxYBqqcLRpWn1b",
+            "name": "2026-05-29T05-39-33-758Z-vfcmq8.jpg",
+            "size": 390311
+          }
+        ],
+        null,
+        "rec27uzo0XueEM"
+      ],
+      [
+        "异兽弹窗预览资源核心的时候看不到生产效率信息，写在道具描述里可能也不是个好办法",
+        [
+          {
+            "file_token": "BGVwbSCjFoj848xs62acB2kpnDD",
+            "name": "image.png",
+            "size": 861616
+          }
+        ],
+        [
+          "P2"
+        ],
+        null,
+        "考虑一下。目前情况来说可能没有什么更好方法",
+        [
+          {
+            "id": "ou_91ac14683e3cf2bbf37e301fb24469f1",
+            "name": "王宇轩（实习）"
+          }
+        ],
+        [
+          {
+            "id": "ou_b02713d5214e4c3410d05ea8a2ca0fdb",
+            "name": "李承轩"
+          }
+        ],
+        null,
+        "2026-05-21 19:45:19",
+        null,
+        [
+          {
+            "file_token": "AkrsbXbFGojFGjxng0wchzKbnZ3",
+            "name": "2026-05-27T08-40-23-868Z-67chdd.jpg",
+            "size": 592935
+          }
+        ],
+        null,
+        "recvkfPF8WNvMq"
+      ],
+      [
+        "这个怎么不算城内的",
+        [
+          {
+            "file_token": "C3BjbCefVoqAl3xsYPFcdCgVn8b",
+            "name": "image.png",
+            "size": 36938
+          }
+        ],
+        [
+          "P2"
+        ],
+        [
+          "处理中"
+        ],
+        "再考虑下描述有没有优化空间",
+        [
+          {
+            "id": "ou_91ac14683e3cf2bbf37e301fb24469f1",
+            "name": "王宇轩（实习）"
+          }
+        ],
+        [
+          {
+            "id": "ou_bde41410dc21c1fb81b3a8592a21fc03",
+            "name": "李辰扬"
+          }
+        ],
+        2,
+        "2026-05-28 16:51:57",
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        [
+          {
+            "file_token": "Nfulb7LKHoh6bfx72eCc238fnKg",
+            "name": "2026-05-28T08-52-05-258Z-p572o7.jpg",
+            "size": 351225
+          }
+        ],
+        null,
+        "rec27ue8jBAtdT"
+      ],
+      [
+        "荒野征服活动里，已经领完奖的条目信息比较冗余，可以按照第二张图片优化一下显示的信息",
+        [
+          {
+            "file_token": "ToUTb2JPKoIneDx3obEcoBIrnWd",
+            "name": "image.png",
+            "size": 1933753
+          },
+          {
+            "file_token": "HM2Bbqs0somFOLxDEiYcUJtonZb",
+            "name": "image.png",
+            "size": 1941574
+          }
+        ],
+        [
+          "P2"
+        ],
+        [
+          "处理中"
+        ],
+        null,
+        [
+          {
+            "id": "ou_91ac14683e3cf2bbf37e301fb24469f1",
+            "name": "王宇轩（实习）"
+          }
+        ],
+        [
+          {
+            "id": "ou_b02713d5214e4c3410d05ea8a2ca0fdb",
+            "name": "李承轩"
+          }
+        ],
+        null,
+        "2026-05-29 09:46:35",
+        null,
+        [
+          {
+            "file_token": "LeJrbaWjNo12lXxGOikc3NCrnyf",
+            "name": "2026-05-29T01-46-44-590Z-73z0hw.jpg",
+            "size": 449822
+          }
+        ],
+        null,
+        "rec27uvq7ulqyP"
+      ],
+      [
+        "用“h”“H”作为单位，是否要考虑针对新手玩家理解问题？例如不统一用英语，改成“时”",
+        [
+          {
+            "file_token": "MczSbRTlPof7oJxyzVScT4bJnwc",
+            "name": "image.png",
+            "size": 741538
+          },
+          {
+            "file_token": "E46bbfTcuo5xEbx4cmHcxhDGnWd",
+            "name": "image.png",
+            "size": 1405241
+          }
+        ],
+        null,
+        null,
+        null,
+        [
+          {
+            "id": "ou_91ac14683e3cf2bbf37e301fb24469f1",
+            "name": "王宇轩（实习）"
+          }
+        ],
+        [
+          {
+            "id": "ou_d5bcd55aaac47d083aba141be3b89066",
+            "name": "黄静茹"
+          }
+        ],
+        null,
+        "2026-06-12 14:23:41",
+        null,
+        [
+          {
+            "file_token": "O8gDbsR11oMT7Fxt6gRcKLDAn3b",
+            "name": "2026-06-12T06-25-29-704Z-lhfbbr.jpg",
+            "size": 544958
+          }
+        ],
+        null,
+        "recvmjafQQXcNn"
+      ],
+      [
+        "想要一键升级功能常驻",
+        [
+          {
+            "file_token": "BPmtb3qgZo9HRJxWUD1c9vzLnJb",
+            "name": "image.png",
+            "size": 162256
+          },
+          {
+            "file_token": "Bz6cbJJKAofLEixHmkkcFzQvnMg",
+            "name": "image.png",
+            "size": 1158809
+          }
+        ],
+        [
+          "P2"
+        ],
+        [
+          "处理中"
+        ],
+        null,
+        [
+          {
+            "id": "ou_d8d7c174961e537f1b9669c085b5d82a",
+            "name": "杨心权"
+          }
+        ],
+        [
+          {
+            "id": "ou_bde41410dc21c1fb81b3a8592a21fc03",
+            "name": "李辰扬"
+          }
+        ],
+        null,
+        "2026-05-29 18:13:56",
+        null,
+        [
+          {
+            "file_token": "AycpbG7BNoFfP5xTQjycy5Donqe",
+            "name": "2026-05-29T10-14-04-996Z-n7wcv2.jpg",
+            "size": 418316
+          }
+        ],
+        null,
+        "rec27uE438TTDe"
+      ],
+      [
+        "射程远的单位，在前往攻击王虫时，路线会被其他界面遮挡，导致会误解没有响应用户操作",
+        [
+          {
+            "file_token": "MEIPblseFor88zxpswtc8hXOnhe",
+            "name": "20260521115539_rec_.mp4",
+            "size": 13113551
+          }
+        ],
+        [
+          "P2"
+        ],
+        [
+          "设计中"
+        ],
+        "[远程攻击单位攻击目标时路线被遮挡](https://centurygames.feishu.cn/wiki/WuxYwtzemiHKIQkwUcYcpS36nZe)",
+        [
+          {
+            "id": "ou_8346f4e78e89369b9113a2608ac6bd87",
+            "name": "张泽臻"
+          }
+        ],
+        [
+          {
+            "id": "ou_8346f4e78e89369b9113a2608ac6bd87",
+            "name": "张泽臻"
+          }
+        ],
+        null,
+        "2026-05-21 11:56:00",
+        null,
+        [
+          {
+            "file_token": "Dqkhb1dDZoXQRixYmCscdEOqnQh",
+            "name": "2026-05-27T08-40-41-765Z-wh7wam.jpg",
+            "size": 381236
+          }
+        ],
+        null,
+        "recvkdVvRC7c42"
+      ],
+      [
+        "高台路线开始不显示，走到了对应的点才会有",
+        [
+          {
+            "file_token": "Pb1MbWnkkoUqzixMyGGctlGVnDf",
+            "name": "20260602-0946-39.3704136.mp4",
+            "size": 39265038
+          }
+        ],
+        [
+          "P2"
+        ],
+        [
+          "处理中"
+        ],
+        "已开单：\n[https://project.feishu.cn/t0k6tk/issue/detail/7013858025](https://project.feishu.cn/t0k6tk/issue/detail/7013858025)",
+        [
+          {
+            "id": "ou_8346f4e78e89369b9113a2608ac6bd87",
+            "name": "张泽臻"
+          }
+        ],
+        [
+          {
+            "id": "ou_e7c84423fb9f610626638f9ae5d28a29",
+            "name": "陈静"
+          }
+        ],
+        null,
+        "2026-06-02 17:48:15",
+        null,
+        [
+          {
+            "file_token": "ONtGbYfPgocMkoxKfFDck4E9n9d",
+            "name": "2026-06-02T09-48-25-675Z-99jt3h.jpg",
+            "size": 351692
+          }
+        ],
+        null,
+        "rec27wdLo3OUi2"
+      ],
+      [
+        "每次点击新手引导的时候，总是点到地图上",
+        [
+          {
+            "file_token": "Ip16bXlJTomivGxmg7gcSuFknpg",
+            "name": "image.png",
+            "size": 1194207
+          }
+        ],
+        null,
+        null,
+        null,
+        null,
+        [
+          {
+            "id": "ou_0708d11f9c68945c72c1e0f6fff51125",
+            "name": "康俊花"
+          }
+        ],
+        null,
+        "2026-06-15 14:40:08",
+        null,
+        [
+          {
+            "file_token": "OXYUbIm4Vor34jxYqI4cUv18nhl",
+            "name": "2026-06-15T06-40-18-087Z-a55zza.jpg",
+            "size": 198689
+          }
+        ],
+        null,
+        "rec27Bjvfn1Hff"
+      ],
+      [
+        "同一个位置的技能按钮，不同角色有不同操作方式，对我这样的玩家很不习惯",
+        [
+          {
+            "file_token": "WbIXbfp4roEatCxLvbrcwas5nac",
+            "name": "image.png",
+            "size": 1040384
+          }
+        ],
+        null,
+        null,
+        null,
+        null,
+        [
+          {
+            "id": "ou_0708d11f9c68945c72c1e0f6fff51125",
+            "name": "康俊花"
+          }
+        ],
+        null,
+        "2026-06-15 17:47:47",
+        null,
+        [
+          {
+            "file_token": "AuUNbg53loCXFYxpRqQcn3CNnab",
+            "name": "2026-06-15T09-47-58-322Z-t7bo2m.jpg",
+            "size": 188380
+          }
+        ],
+        null,
+        "rec27BmHsq5w55"
+      ],
+      [
+        "?????????????????",
+        null,
+        null,
+        null,
+        "来源：平台提交\n类型：????\n提交人：????\n平台记录ID：pfb_2fb64ca3ec9b4962",
+        null,
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-17 16:42:01",
+        null,
+        [
+          {
+            "file_token": "KILOb1axUoxjYqxBxmpcN8yFnYf",
+            "name": "2026-06-17T08-42-12-582Z-finbin.jpg",
+            "size": 486230
+          }
+        ],
+        null,
+        "recvmMXIdBCiF5"
+      ],
+      [
+        "?????????????????",
+        null,
+        null,
+        null,
+        "来源：平台提交\n类型：????\n提交人：????\n平台记录ID：pfb_59ebccc325e34f69",
+        null,
+        [
+          {
+            "id": "ou_24c7971a3d10e864bce81a21ebe76a41",
+            "name": "仝夏瀛"
+          }
+        ],
+        null,
+        "2026-06-17 16:42:18",
+        null,
+        [
+          {
+            "file_token": "VVn6bRYExojHDkxAMQtcg8bJnbd",
+            "name": "2026-06-17T08-42-38-000Z-7diu6a.jpg",
+            "size": 448313
+          }
+        ],
+        null,
+        "recvmMXMSgllQf"
+      ]
+    ],
+    "field_id_list": [
+      "fldHy9HQO9",
+      "fldmlme6mj",
+      "flddZqPy4y",
+      "fldxB7QmPi",
+      "fldPTWrwky",
+      "fldubdP27N",
+      "fldqXT3xTr",
+      "fldP1f1suK",
+      "fldvRZllDS",
+      "fldoj9ibxW",
+      "fldftLhjJK",
+      "fldbBFvDCK",
+      "fld3OvDRYC"
+    ],
+    "fields": [
+      "描述",
+      "截图",
+      "优先级",
+      "状态",
+      "备注",
+      "策划",
+      "提出人",
+      "点赞人数",
+      "创建时间",
+      "点赞/取消人员列表",
+      "问题描述图片",
+      "评分",
+      "记录id"
+    ],
+    "has_more": false,
+    "ignored_fields": [
+      {
+        "id": "fldwU4Vi3E",
+        "name": "开单",
+        "reason": "UNSUPPORTED: not_support field cannot be read through OpenAPI."
+      },
+      {
+        "id": "flduM61fk5",
+        "name": "赞同",
+        "reason": "UNSUPPORTED: not_support field cannot be read through OpenAPI."
+      }
+    ],
+    "query_context": {
+      "field_scope": "view_visible_fields",
+      "record_scope": "view_filtered_records"
+    },
+    "record_id_list": [
+      "rec27tqRSCY5HJ",
+      "rec27uzHvL4c4T",
+      "rec27uCefsOU6o",
+      "rec27uCeLfw5ju",
+      "rec27vHEnnmNEb",
+      "recvmj6AVJPAXK",
+      "recvkaHaMOlvyG",
+      "recvkNEWcjdMo6",
+      "rec27uvuOsu2BX",
+      "rec27uzo0XueEM",
+      "recvkfPF8WNvMq",
+      "rec27ue8jBAtdT",
+      "rec27uvq7ulqyP",
+      "recvmjafQQXcNn",
+      "rec27uE438TTDe",
+      "recvkdVvRC7c42",
+      "rec27wdLo3OUi2",
+      "rec27Bjvfn1Hff",
+      "rec27BmHsq5w55",
+      "recvmMXIdBCiF5",
+      "recvmMXMSgllQf"
+    ]
+  }
+}
