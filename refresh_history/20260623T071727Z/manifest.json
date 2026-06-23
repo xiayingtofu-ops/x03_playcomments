@@ -1,0 +1,81 @@
+{
+  "base_token": "PQTsbEtUPaV80isZ5dRcVFKsn6f",
+  "table_id": "tblYhznxxvRtSyY9",
+  "view_id": "vew9FrF9dW",
+  "record_count": 30,
+  "attachment_count": 21,
+  "ignored_fields": [
+    {
+      "id": "fldwU4Vi3E",
+      "name": "开单",
+      "reason": "UNSUPPORTED: not_support field cannot be read through OpenAPI."
+    },
+    {
+      "id": "flduM61fk5",
+      "name": "赞同",
+      "reason": "UNSUPPORTED: not_support field cannot be read through OpenAPI."
+    }
+  ],
+  "fields": [
+    "描述",
+    "截图",
+    "优先级",
+    "状态",
+    "备注",
+    "版本",
+    "策划",
+    "开单",
+    "提出人",
+    "经办人",
+    "开单结果",
+    "赞同",
+    "点赞人数",
+    "创建时间",
+    "点赞/取消人员列表",
+    "问题描述图片",
+    "评分",
+    "记录id"
+  ],
+  "field_ids": [
+    "fldHy9HQO9",
+    "fldmlme6mj",
+    "flddZqPy4y",
+    "fldxB7QmPi",
+    "fldPTWrwky",
+    "fldvbQ4uOJ",
+    "fldubdP27N",
+    "fldwU4Vi3E",
+    "fldqXT3xTr",
+    "fldVARCNIk",
+    "fldN0MElIc",
+    "flduM61fk5",
+    "fldP1f1suK",
+    "fldvRZllDS",
+    "fldoj9ibxW",
+    "fldftLhjJK",
+    "fldbBFvDCK",
+    "fld3OvDRYC"
+  ],
+  "files": {
+    "database": "C:\\Users\\Administrator\\Documents\\New project\\feishu_base_export\\feishu_base_records.db",
+    "records_csv": "C:\\Users\\Administrator\\Documents\\New project\\feishu_base_export\\base_records.csv",
+    "attachments_csv": "C:\\Users\\Administrator\\Documents\\New project\\feishu_base_export\\base_attachments.csv",
+    "records_raw": "C:\\Users\\Administrator\\Documents\\New project\\feishu_base_export\\records_raw.json",
+    "fields_raw": "C:\\Users\\Administrator\\Documents\\New project\\feishu_base_export\\fields_raw.json",
+    "attachments_dir": "C:\\Users\\Administrator\\Documents\\New project\\feishu_base_export\\attachments",
+    "download_status_csv": "C:\\Users\\Administrator\\Documents\\New project\\feishu_base_export\\attachment_download_status.csv"
+  },
+  "download_summary": {
+    "total": 24,
+    "reused": 18,
+    "downloaded": 6,
+    "missing": 0,
+    "status_csv": "C:\\Users\\Administrator\\Documents\\New project\\feedback-platform-deploy-8766\\attachment_download_status.csv"
+  },
+  "last_snapshot_sync_at": "2026-06-22T11:15:33.610481+00:00",
+  "snapshot_source": {
+    "type": "xlsx",
+    "file_name": "X03??????????_???_??.xlsx",
+    "imported_at": "2026-06-16T02:12:53.268406+00:00"
+  }
+}
