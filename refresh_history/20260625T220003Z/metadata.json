@@ -1,0 +1,6 @@
+{
+  "created_at": "2026-06-25T22:00:03.794299+00:00",
+  "trigger": "windows-scheduled",
+  "server_root": "C:\\Users\\Administrator\\Documents\\New project\\feishu_base_export",
+  "db_path": "C:\\Users\\Administrator\\Documents\\New project\\feishu_base_export\\platform_feedback.db"
+}
